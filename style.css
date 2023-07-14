@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body
+{
+	font: normal 75% 'Press Start 2P';
+	margin: 0;
+}
+
+html, body 
+{
+	height: 100%;
+	background-color: #000;
+	color: #FFF;
+	transition: background-color 0.5s ease;
+}
+ 
+.container
+{
+	max-width: 75%;
+	flex: 1 1 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
+	margin: 0 auto 0 auto;
+	flex-wrap: wrap;
+}
+
+h1 
+{
+	font-size: 200%;
+	font-weight: 400;
+	margin: 0;
+}
+
+.container h2 
+{
+	font-size: 150%;
+	font-weight: 400;
+	margin: 0;
+}
+
+a
+{	
+	text-decoration: none;
+	color: #CCC;
+}
+
+a:hover 
+{
+	color: #EEE;
+}
+
+.linkcontainer
+{
+    position: fixed;
+    left: 50%;
+    bottom: 5%;
+    transform: translate(-50%, 0%);
+    margin: 0 auto;
+}
+
+.header
+{
+	position: fixed;
+	left: 50%;
+	top: 5%;
+	transform: translate(-50%, 0%);
+}
+
+img 
+{
+    width: 43.75vw;
+    height: 50vh;
+}
+
+ul 
+{
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  overflow: visible;
+}
+
+li 
+{
+  display: inline;
+}
+
+/* Light Mode / Dark Mode */
+#lightswitch
+{
+	color: transparent;
+	cursor: pointer;	
+	user-select: none;
+	background-color: #000;
+	text-shadow: 0 0 0 #CCC;
+	transition: background-color 0.5s ease;
+}
+
+.lightmode 
+{
+	background-color: #FFF;
+	color: #000;
+	transition: background-color 0.5s ease;
+}
+
+.lightmode a
+{
+	color: #333;
+}
+
+.lightmode a:hover 
+{
+	color: #111;
+}
+
+.lightmode #lightswitch
+{
+	background-color: #FFF;
+	text-shadow: 0 0 0 #333;
+	transition: background-color 0.5s ease;
+}
+
+/*.darkmode 
+{
+	background-color: #000;
+	color: #FFF;
+	transition: background-color 0.5s ease;
+}
+
+.darkmode a
+{
+	color: #CCC;
+}
+
+.darkmode #lightswitch
+{
+	background-color: #000;
+	text-shadow: 0 0 0 #FFF;
+	transition: background-color 0.5s ease;
+}*/
+
+/* Slideshow */
+#backbutton, #nextbutton
+{
+	cursor: pointer;	
+	user-select: none;
+	color: #CCC;
+}
+
+#backbutton
+{
+	float: left;
+}
+
+#nextbutton
+{
+	float: right;
+}
+
+#backbutton:hover, #nextbutton:hover
+{
+	color: #EEE;
+}
+
+.lightmode #backbutton, .lightmode #nextbutton
+{
+	color: #333;
+}
+
+.lightmode #backbutton:hover, .lightmode #nextbutton:hover
+{
+	color: #111;
+}
+
+#buttoncontainer
+{
+	position: fixed;
+	left: 50%;
+	bottom: 10%;
+	transform: translate(-50%, 0%);
+	margin: 0 auto;
+	padding: 30px; 
+}
+
+.notransition
+{
+	transition: none !important;
+}
+
+/* Mobile */
+@media (any-pointer: coarse)
+{
+	body
+	{
+		font: normal 65% 'Press Start 2P';
+	}
+
+	.container 
+	{
+		max-width: 65%;
+	}
+	
+	h1
+	{
+		font-size: 173%;
+	}
+
+	.container h2 
+	{
+		font-size: 130%;
+	}
+	
+	.linkcontainer
+	{
+		width: 75%;
+		left: 55%;
+	}
+	
+	#buttoncontainer
+	{
+		bottom: 20%;
+	}
+}
+
+/* Intro */
+/* #intro 
+{
+	margin: 0 auto;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+    background-image: repeating-radial-gradient(circle at 17% 32%, white, black 0.00085px);
+    background-position: center;
+    animation: back 5s linear, goodbye ease 5s;
+}
+
+.container, .linkcontainer, #lightswitch
+{
+	animation: hello ease 4s;
+}
+
+@keyframes back 
+{
+	from 
+	{
+		background-size: 48.56% 50%;
+	}
+	to 
+	{
+		background-size: 43.9% 50.1%;
+	}
+}
+
+@keyframes goodbye 
+{
+	0% 
+	{
+		opacity: 1;
+	}
+	100% 
+	{
+		opacity: 0;
+	}
+}
+
+@keyframes hello
+{
+	0% 
+	{
+		opacity: 0;
+	}
+	100% 
+	{
+		opacity: 1;
+	}
+} */
