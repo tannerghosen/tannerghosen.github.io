@@ -1,6 +1,16 @@
 // JavaScript
+
+// var mode = "";
+// mode was changed from a variable to a localstorage item so like page, we can autosave that setting too!
+if (!localStorage.getItem("mode"))
+{
+	localStorage.setItem("mode", "dark");
 	
-var mode = "dark";
+}
+if (localStorage.getItem("mode"))
+{
+	localStorage.getItem("mode");
+}
 var project = 1;
 var maxprojects = 4;
 var slideshow = false;
@@ -9,21 +19,35 @@ document.addEventListener("DOMContentLoaded", () =>
 {
 
 // Light/Dark Mode Function
-	if(mode == "light")
+	function LightSwitch()
 	{
-		document.body.classList.toggle("lightmode");
-		document.body.classList.add("notransition");
+		 // toggles lightmode from all tags in document.body (everything)
+		document.body.classList.toggle("lightmode"); 
+	}
+
+	if (localStorage.getItem("mode") === "light") // if the last time we were on the page it was light mode (not default), turn on light mode.
+	{
+		LightSwitch();
+		document.body.classList.add("notransition"); //  without this, you'll see the dark mode briefly as it'll do a transition effect to switch to light mode on the code being ran.
 		setTimeout(function()
 		{
 			document.body.classList.remove("notransition");
 		},500);
 	}
 	
-	document.getElementById("lightswitch").addEventListener("click", () =>
+	document.getElementById("lightswitch").addEventListener("click", (r) =>
 	{
-		document.body.classList.toggle("lightmode");
-		
+
+		if (localStorage.getItem("mode") == "dark") {
+			localStorage.setItem("mode", "light");
+			LightSwitch();
+		}
+		else if (localStorage.getItem("mode") == "light") {
+			localStorage.setItem("mode", "dark");
+			LightSwitch();
+		}
 	});
+
 // Time Function
 	function TheTime() 
 	{ 
