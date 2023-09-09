@@ -14,7 +14,15 @@ html, body
 	transition: background-color 0.5s ease;
 }
 
-
+.container {
+	/* flexbox */
+	max-width: 45%; /* we don't need a lot of space */
+	min-height: 100vh; /* screen height*/
+	display: flex;
+	flex-direction: column; /* this makes it so it doesn't add a new line next to the old line */
+	justify-content: center;
+	align-items: center;
+}
 
 h1 
 {
@@ -197,7 +205,6 @@ li
 }
 
 /* Anims */
-
 @keyframes slidein {
 	0% {
 		/* the -50%'s are to counteract the fact it overwrites the -50% which translates it to the right of center as it does the slide in */
