@@ -14,18 +14,14 @@ html, body
 	transition: background-color 0.5s ease;
 }
 
-.container 
-{
-	position: absolute;
-	margin: auto;
-	top: 15%;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	max-width: 45%;
-	height: 50%;
-	border-radius: 3px;
-	text-align: center;
+.container {
+	/* flexbox */
+	max-width: 45%; /* we don't really need a ton of space. */
+	min-height: 100vh; /* screen height */
+	display: flex;
+	flex-direction: column; /* this makes it so it doesn't add a new line next to the old line */
+	justify-content: center; 
+	align-items: center;
 }
 
 h1 
@@ -67,7 +63,7 @@ a:hover
 	animation: 0.8s ease-out 0s slidein;
 	position: fixed;
 	left: 50%;
-	top: 7.5%;
+	top: 15%;
 	transform: translate(-50%, 0%);
 }
 
@@ -124,25 +120,6 @@ li
 	text-shadow: 0 0 0 #333;
 	transition: background-color 0.5s ease;
 }
-
-/*.darkmode 
-{
-	background-color: #000;
-	color: #FFF;
-	transition: background-color 0.5s ease;
-}
-
-.darkmode a
-{
-	color: #CCC;
-}
-
-.darkmode #lightswitch
-{
-	background-color: #000;
-	text-shadow: 0 0 0 #FFF;
-	transition: background-color 0.5s ease;
-}*/
 
 /* Slideshow */
 #backbutton, #nextbutton
@@ -230,14 +207,14 @@ li
 /* Anims */
 
 @keyframes slidein {
-	0% 
-	{
+	0% {
+		/* the -50%'s are to counteract the fact it overwrites the -50% which translates it to the right of center as it does the slide in */
 		transform: translate(-50%, -300%);
 	}
 
 	50% 
 	{
-		transform: translate(-50%, 10%);
+		transform: translate(-50%, 20%);
 	}
 
 	100% 
