@@ -7,10 +7,6 @@ if (!localStorage.getItem("mode"))
 	localStorage.setItem("mode", "dark");
 	
 }
-if (localStorage.getItem("mode"))
-{
-	localStorage.getItem("mode");
-}
 var project = 1;
 var maxprojects = 4;
 var slideshow = false;
@@ -35,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () =>
 		},500);
 	}
 	
-	document.getElementById("lightswitch").addEventListener("click", (r) =>
+	document.getElementById("lightswitch").addEventListener("click", () =>
 	{
 
 		if (localStorage.getItem("mode") == "dark") {
