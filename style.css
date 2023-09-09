@@ -14,15 +14,7 @@ html, body
 	transition: background-color 0.5s ease;
 }
 
-.container {
-	/* flexbox */
-	max-width: 45%; /* we don't really need a ton of space. */
-	min-height: 100vh; /* screen height */
-	display: flex;
-	flex-direction: column; /* this makes it so it doesn't add a new line next to the old line */
-	justify-content: center; 
-	align-items: center;
-}
+
 
 h1 
 {
