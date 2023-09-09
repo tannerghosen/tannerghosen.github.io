@@ -129,6 +129,7 @@ document.addEventListener("DOMContentLoaded", () =>
 });
 
 // Router (part 2)
+// header is website's head, head is loaded page's head that's removed.
 const pages = "pages";
 const parser = new DOMParser();
 const stringtohtml = function(string) 
@@ -158,6 +159,7 @@ const loadpage = (page) =>
 			app.innerHTML = data.body.innerHTML;
 			var head = document.getElementById("header");
 			header.innerHTML = head.innerHTML;
+			document.title = head.innerHTML;
 			head.parentNode.removeChild(head);
 			localStorage.setItem("lastpage",page);
 		}).catch(error => console.log(error))
