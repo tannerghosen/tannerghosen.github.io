@@ -158,7 +158,7 @@ const stringtohtml = function(string)
 }
 const loadpage = (page) =>
 {
-	var header = document.getElementById("page");
+	var header = document.getElementById("header"); // the header (called page) in index.html
 	document.body.addEventListener("click", (ev) =>
 	{
 		if(ev.target.tagName == "A") 
@@ -177,10 +177,10 @@ const loadpage = (page) =>
 		.then(data => {
 			data = stringtohtml(data);
 			app.innerHTML = data.body.innerHTML;
-			var head = document.getElementById("header");
-			header.innerHTML = head.innerHTML;
-			document.title = head.innerHTML;
-			head.parentNode.removeChild(head);
+			var head = document.getElementById("page"); // loaded pages have a h1 that is the name of the page, with an id of "page"
+			header.innerHTML = head.innerHTML; // let's set our real header to the page name
+			document.title = head.innerHTML; // and let's set our page's title to the page name
+			head.parentNode.removeChild(head); // and remove the h1 from the loaded page, as we don't need duplicates.
 			localStorage.setItem("lastpage",page);
 		}).catch(error => console.log(error))
 }
