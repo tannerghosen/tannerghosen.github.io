@@ -1,7 +1,7 @@
 // JavaScript
 
 // var mode = "";
-// mode was changed from a variable to a localstorage item so like page, we can autosave that setting too!
+// mode was changed from a variable to a localstorage item so like page, we can save that setting too!
 if (!localStorage.getItem("mode"))
 {
 	localStorage.setItem("mode", "dark");
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () =>
 	
 	if(localStorage.getItem("lastpage"))
 	{
-		loadpage(localStorage.getItem("lastpage"));
+		LoadPage(localStorage.getItem("lastpage"));
 		if(localStorage.getItem("lastpage") == "portfolio")
 		{
 			document.getElementById("buttoncontainer").removeAttribute("hidden");
@@ -144,19 +144,19 @@ document.addEventListener("DOMContentLoaded", () =>
 	}
 	else
 	{
-		loadpage("home");
+		LoadPage("home");
 	}
 });
 
 // Router (part 2)
 // header is website's head, head is loaded page's head that's removed.
-const pages = "pages";
+const pages = "./pages";
 const parser = new DOMParser();
-const stringtohtml = function(string) 
+const stringtoHTML = function(string) 
 {
 	return parser.parseFromString(string, "text/html"); 
 }
-const loadpage = (page) =>
+const LoadPage = (page) =>
 {
 	var header = document.getElementById("header"); // the header (called page) in index.html
 	document.body.addEventListener("click", (ev) =>
@@ -170,17 +170,17 @@ const loadpage = (page) =>
 		}
 	});
 	
-	fetch(`./${pages}/${page}.html`)
+	fetch(`${pages}/${page}.html`)
 		.then(response => {
-			return response.text() 
+			return response.text() // we grab the content from the page
 			})
 		.then(data => {
-			data = stringtohtml(data);
-			app.innerHTML = data.body.innerHTML;
+			data = stringtoHTML(data); // and we make it HTML again
+			app.innerHTML = data.body.innerHTML; // set the div id 'app' to contain the content from our data.
 			var head = document.getElementById("page"); // loaded pages have a h1 that is the name of the page, with an id of "page"
 			header.innerHTML = head.innerHTML; // let's set our real header to the page name
 			document.title = head.innerHTML; // and let's set our page's title to the page name
 			head.parentNode.removeChild(head); // and remove the h1 from the loaded page, as we don't need duplicates.
-			localStorage.setItem("lastpage",page);
+			localStorage.setItem("lastpage",page); // and we set the page to finish off.
 		}).catch(error => console.log(error))
 }

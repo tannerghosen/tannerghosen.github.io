@@ -60,7 +60,8 @@ a:hover
 
 .header {
 	transition: all 0.2s ease-out;
-	animation: 0.8s ease-out 0s slidein;
+	animation: slidein 0.8s ease-in; /* remove ease-in and keep the following: forwards, 
+		anotheranim 3s linear 1s infinite forwards;*/
 	position: fixed;
 	left: 50%;
 	top: 15%;
@@ -205,8 +206,10 @@ li
 }
 
 /* Anims */
-@keyframes slidein {
-	0% {
+@keyframes slidein 
+{
+	0% 
+	{
 		/* the -50%'s are to counteract the fact it overwrites the -50% which translates it to the right of center as it does the slide in */
 		transform: translate(-50%, -300%);
 	}
