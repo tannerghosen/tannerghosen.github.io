@@ -47,9 +47,10 @@ document.addEventListener("DOMContentLoaded", () =>
 // Time Function
 	function TheTime() 
 	{ 
+		// time.getMonth()+1 if you use x/x/xxxx for day format
 		var time = new Date();
-
-		var [month, day, year, hour, minute, second, period] = [time.getMonth()+1, time.getDate(), time.getFullYear(), time.getHours(), time.getMinutes(), time.getSeconds(), "AM"];
+		var months = ["Janurary", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		var [month, day, year, hour, minute, second, period] = [months[time.getMonth()], time.getDate(), time.getFullYear(), time.getHours(), time.getMinutes(), time.getSeconds(), "AM"];
 		if (minute < 10)
 		{
 			minute = "0"+minute;
@@ -76,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () =>
 
 		if(document.getElementById("time"))
 		{
-			document.getElementById("time").innerHTML = `Today is ${month}/${day}/${year} and the time is ${hour}:${minute}:${second} ${period}.`;
+			document.getElementById("time").innerHTML = `Today is ${month} ${day}, ${year} and the time is ${hour}:${minute}:${second} ${period}.`;
 		}
 	}
 
