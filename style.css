@@ -175,33 +175,40 @@ li
 {
 	body
 	{
-		font: normal 65% 'Press Start 2P';
+		font: normal 45% 'Press Start 2P';
 	}
 
 	.container 
 	{
-		max-width: 45%;
+		max-width: 55%;
+		max-height: 50%;
 	}
 	
 	h1
 	{
-		font-size: 173%;
+		font-size: 150%;
 	}
 
 	.container h2 
 	{
-		font-size: 130%;
+		font-size: 125%;
 	}
 	
 	.linkcontainer
 	{
 		width: 75%;
-		left: 55%;
+		left: 65%;
+		bottom: 15%;
 	}
 	
 	#buttoncontainer
 	{
-		bottom: 20%;
+		bottom: 15%;
+	}
+
+	.header 
+	{
+		top: 22.5%;
 	}
 }
 
