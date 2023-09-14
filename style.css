@@ -204,9 +204,10 @@ li
 	
 	.linkcontainer
 	{
-		width: 55%;
+		width: 60%;
 		left: 50%;
 		bottom: 15%;
+		text-align: center;
 	}
 	
 	#buttoncontainer
