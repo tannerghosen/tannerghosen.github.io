@@ -171,7 +171,7 @@ li
 }
 
 /* Mobile */
-@media (any-pointer: coarse)
+@media (any-pointer: coarse) and (max-width: 450px)
 {
 	body
 	{
@@ -209,6 +209,13 @@ li
 	.header 
 	{
 		top: 22.5%;
+	}
+
+	html, body 
+	{
+		margin: 0;
+		height: 100%;
+		overflow: hidden
 	}
 }
 
