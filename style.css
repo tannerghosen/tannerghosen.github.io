@@ -49,13 +49,15 @@ a:hover
 	color: #EEE;
 }
 
-.linkcontainer
-{
-    position: fixed;
-    left: 50%;
-    bottom: 7.5%;
-    transform: translate(-50%, 0%);
-    margin: 0 auto;
+.linkcontainer {
+	position: fixed;
+	left: 50%;
+	bottom: 7.5%;
+	transform: translate(-50%, 0%);
+	margin: 0 auto;
+	background-color: #222;
+	border: 1px solid #CCC;
+	padding: 7.5px;
 }
 
 .header {
@@ -93,8 +95,8 @@ li
 	color: transparent;
 	cursor: pointer;	
 	user-select: none;
-	background-color: #000;
-	text-shadow: 0 0 0 #CCC;
+	background-color: #222;
+	text-shadow: 0 0 0 #000;
 	transition: background-color 0.5s ease;
 }
 
@@ -117,9 +119,15 @@ li
 
 .lightmode #lightswitch
 {
-	background-color: #FFF;
+	background-color: #DDD;
 	text-shadow: 0 0 0 #333;
 	transition: background-color 0.5s ease;
+}
+
+.lightmode .linkcontainer 
+{
+	background-color: #DDD;
+	border: 1px solid #333;
 }
 
 /* Slideshow */
@@ -196,8 +204,8 @@ li
 	
 	.linkcontainer
 	{
-		width: 75%;
-		left: 65%;
+		width: 55%;
+		left: 50%;
 		bottom: 15%;
 	}
 	
