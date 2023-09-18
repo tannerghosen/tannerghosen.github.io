@@ -1,11 +1,10 @@
 // JavaScript
 
 // var mode = "";
-// mode was changed from a variable to a localstorage item so like page, we can save that setting too!
+// mode was changed from a variable to a localStorage item so like page, we can save that setting too!
 if (!localStorage.getItem("mode"))
 {
 	localStorage.setItem("mode", "dark");
-	
 }
 var project = 1;
 var maxprojects = 4;
@@ -33,12 +32,13 @@ document.addEventListener("DOMContentLoaded", () =>
 	
 	document.getElementById("lightswitch").addEventListener("click", () =>
 	{
-
-		if (localStorage.getItem("mode") == "dark") {
+		if (localStorage.getItem("mode") == "dark") // dark
+		{ 
 			localStorage.setItem("mode", "light");
 			LightSwitch();
 		}
-		else if (localStorage.getItem("mode") == "light") {
+		else if (localStorage.getItem("mode") == "light") // light
+		{
 			localStorage.setItem("mode", "dark");
 			LightSwitch();
 		}
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () =>
 // Slideshow
 	document.getElementById("backbutton").addEventListener("click", () =>
 	{
-		if(project == 1)
+		if(project == 1) // if we are at the first project, go to the last project.
 		{
 			project = maxprojects;
 			document.getElementById("project1").setAttribute("hidden","");
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () =>
 	});
 	document.getElementById("nextbutton").addEventListener("click", () =>
 	{
-		if(project == maxprojects)
+		if(project == maxprojects) // if we are at the last project, go to the first project.
 		{
 			project = 1;
 			document.getElementById("project"+maxprojects).setAttribute("hidden","");
@@ -115,19 +115,14 @@ document.addEventListener("DOMContentLoaded", () =>
 			document.getElementById("project"+project).removeAttribute("hidden");
 		}
 	});
-// Show/Hide Buttons
+
+// Links
 	document.body.addEventListener("click", (e) =>
 	{
-		if(e.target.tagName == "A") 
+		if (e.target.tagName == "A")
 		{
-			var href = e.target.getAttribute("href");
-			if(href == "#portfolio")
-			{
-				document.getElementById("buttoncontainer").removeAttribute("hidden");
-			}
-			else
-			{
-				document.getElementById("buttoncontainer").setAttribute("hidden","");
+			if (e.target.href.includes("http") == false) {
+				e.preventDefault(); // this is we so we don't reload the page on clicking a non http/s link.
 			}
 		}
 	});
@@ -135,22 +130,17 @@ document.addEventListener("DOMContentLoaded", () =>
 // Router (part 1)
 	const app = document.getElementById("app");
 	
-	if(localStorage.getItem("lastpage"))
+	if(localStorage.getItem("lastpage")) // if we visited the site before, load the last page.
 	{
 		LoadPage(localStorage.getItem("lastpage"));
-		if(localStorage.getItem("lastpage") == "portfolio")
-		{
-			document.getElementById("buttoncontainer").removeAttribute("hidden");
-		}
 	}
-	else
+	else // first time we were here, load home.
 	{
 		LoadPage("home");
 	}
 });
 
 // Router (part 2)
-// header is website's head, head is loaded page's head that's removed.
 const pages = "./pages";
 const parser = new DOMParser();
 const stringtoHTML = function(string) 
@@ -159,29 +149,29 @@ const stringtoHTML = function(string)
 }
 const LoadPage = (page) =>
 {
-	var header = document.getElementById("header"); // the header (called page) in index.html
-	document.body.addEventListener("click", (ev) =>
-	{
-		if(ev.target.tagName == "A") 
-		{
-			if (ev.target.href.includes("http") == false)
-			{
-				ev.preventDefault();
-			}
-		}
-	});
-	
+	var header = document.getElementById("header"); // header is index.html's header
+
 	fetch(`${pages}/${page}.html`)
 		.then(response => {
-			return response.text() // we grab the content from the page
+			return response.text() // we grab the content of the page, but it is a string
 			})
 		.then(data => {
-			data = stringtoHTML(data); // and we make it HTML again
-			app.innerHTML = data.body.innerHTML; // set the div id 'app' to contain the content from our data.
-			var head = document.getElementById("page"); // loaded pages have a h1 that is the name of the page, with an id of "page"
-			header.innerHTML = head.innerHTML; // let's set our real header to the page name
-			document.title = head.innerHTML; // and let's set our page's title to the page name
-			head.parentNode.removeChild(head); // and remove the h1 from the loaded page, as we don't need duplicates.
-			localStorage.setItem("lastpage",page); // and we set the page to finish off.
+			data = stringtoHTML(data); // we make our data HTML from a string, as it should be
+			app.innerHTML = data.body.innerHTML; // the div id 'app' will contain our string-to-HTML data from the loaded page.
+			var head = document.getElementById("page"); // loaded pages have a h1 header that is the name of the page, with an id of "page"
+			header.innerHTML = head.innerHTML; // let's set index.html's header to match the header from the loaded page
+			document.title = head.innerHTML; // and let's set our title to the loaded page's name too
+			head.parentNode.removeChild(head); // and remove the h1 header from the loaded page, as we don't need duplicates.
+			localStorage.setItem("lastpage", page); // and we set the page here in case we reload or come back later.
 		}).catch(error => console.log(error))
+
+// Show/Hide Buttons
+	if (page == "Portfolio") // if the page is Portfolio, make buttons visible.
+	{
+		document.getElementById("buttoncontainer").removeAttribute("hidden");
+	}
+	else
+	{
+		document.getElementById("buttoncontainer").setAttribute("hidden", "");
+	}
 }

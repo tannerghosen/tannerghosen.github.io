@@ -179,49 +179,40 @@ li
 }
 
 /* Mobile */
-@media (any-pointer: coarse) and (max-width: 450px)
-{
-	body
-	{
+@media (any-pointer: coarse) and (hover: none) and (max-width: 450px) {
+	body {
 		font: normal 45% 'Press Start 2P';
 	}
 
-	.container 
-	{
+	.container {
 		max-width: 55%;
 		max-height: 50%;
 	}
-	
-	h1
-	{
+
+	h1 {
 		font-size: 150%;
 	}
 
-	.container h2 
-	{
+	.container h2 {
 		font-size: 125%;
 	}
-	
-	.linkcontainer
-	{
+
+	.linkcontainer {
 		width: 60%;
 		left: 50%;
 		bottom: 15%;
 		text-align: center;
 	}
-	
-	#buttoncontainer
-	{
+
+	#buttoncontainer {
 		bottom: 17.5%;
 	}
 
-	.header 
-	{
+	.header {
 		top: 22.5%;
 	}
 
-	html, body 
-	{
+	html, body {
 		margin: 0;
 		height: 100%;
 		overflow: hidden
