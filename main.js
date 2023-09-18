@@ -121,7 +121,8 @@ document.addEventListener("DOMContentLoaded", () =>
 	{
 		if (e.target.tagName == "A")
 		{
-			if (e.target.href.includes("http") == false) {
+			if (e.target.href.includes("http") == false)
+			{
 				e.preventDefault(); // this is we so we don't reload the page on clicking a non http/s link.
 			}
 		}
@@ -166,7 +167,7 @@ const LoadPage = (page) =>
 		}).catch(error => console.log(error))
 
 // Show/Hide Buttons
-	if (page == "Portfolio") // if the page is Portfolio, make buttons visible.
+	if (page == "portfolio") // if the page is Portfolio, make buttons visible.
 	{
 		document.getElementById("buttoncontainer").removeAttribute("hidden");
 	}
