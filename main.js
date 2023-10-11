@@ -26,20 +26,20 @@ document.addEventListener("DOMContentLoaded", () =>
 		document.body.classList.add("notransition"); //  without this, you'll see the dark mode briefly as it'll do a transition effect to switch to light mode on the code being ran.
 		setTimeout(function()
 		{
-			document.body.classList.remove("notransition");
+			document.body.classList.remove("notransition"); // we don't want it forever because that'll mess up future transitions.
 		},500);
 	}
 	
 	document.getElementById("lightswitch").addEventListener("click", () =>
 	{
-		if (localStorage.getItem("mode") == "dark") // dark
+		if (localStorage.getItem("mode") == "dark") 
 		{ 
-			localStorage.setItem("mode", "light");
+			localStorage.setItem("mode", "light"); // we set it to light mode if it was dark mode
 			LightSwitch();
 		}
-		else if (localStorage.getItem("mode") == "light") // light
+		else if (localStorage.getItem("mode") == "light") 
 		{
-			localStorage.setItem("mode", "dark");
+			localStorage.setItem("mode", "dark"); // vice versa of above
 			LightSwitch();
 		}
 	});
@@ -48,9 +48,10 @@ document.addEventListener("DOMContentLoaded", () =>
 	function TheTime() 
 	{ 
 		// time.getMonth()+1 if you use x/x/xxxx for day format
-		var time = new Date();
-		var months = ["Janurary", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-		var [month, day, year, hour, minute, second, period] = [months[time.getMonth()], time.getDate(), time.getFullYear(), time.getHours(), time.getMinutes(), time.getSeconds(), "AM"];
+		let time = new Date();
+		let months = ["Janurary", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		let [month, day, year, hour, minute, second, period] = [months[time.getMonth()], time.getDate(), time.getFullYear(), time.getHours(), time.getMinutes(), time.getSeconds(), "AM"];
+		// it will only show the minute/second without a 0 in front of it (should it be less than 10) without these two ifs
 		if (minute < 10)
 		{
 			minute = "0"+minute;
@@ -70,9 +71,10 @@ document.addEventListener("DOMContentLoaded", () =>
 			period = "AM";
 		}
 
-		if (hour > 12)
+		if (hour > 12) 
 		{
-			hour = hour - 12;
+			// time uses the 24 hour clock, we want a normal clock, so remove 12 hours if it's greater than that.
+			hour -= 12;
 		}
 
 		if(document.getElementById("time"))
@@ -82,9 +84,10 @@ document.addEventListener("DOMContentLoaded", () =>
 	}
 
 	TheTime();
-	var timer = setInterval(() => TheTime(), 1000);
+	let timer = setInterval(() => TheTime(), 1000);
 
 // Slideshow
+	// Back Button
 	document.getElementById("backbutton").addEventListener("click", () =>
 	{
 		if(project == 1) // if we are at the first project, go to the last project.
@@ -100,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () =>
 			document.getElementById("project"+project).removeAttribute("hidden");
 		}
 	});
+	// Next Button
 	document.getElementById("nextbutton").addEventListener("click", () =>
 	{
 		if(project == maxprojects) // if we are at the last project, go to the first project.
@@ -150,7 +154,7 @@ const stringtoHTML = function(string)
 }
 const LoadPage = (page) =>
 {
-	var header = document.getElementById("header"); // header is index.html's header
+	let header = document.getElementById("header"); // header is index.html's header
 
 	fetch(`${pages}/${page}.html`)
 		.then(response => {
@@ -159,7 +163,7 @@ const LoadPage = (page) =>
 		.then(data => {
 			data = stringtoHTML(data); // we make our data HTML from a string, as it should be
 			app.innerHTML = data.body.innerHTML; // the div id 'app' will contain our string-to-HTML data from the loaded page.
-			var head = document.getElementById("page"); // loaded pages have a h1 header that is the name of the page, with an id of "page"
+			let head = document.getElementById("page"); // loaded pages have a h1 header that is the name of the page, with an id of "page"
 			header.innerHTML = head.innerHTML; // let's set index.html's header to match the header from the loaded page
 			document.title = head.innerHTML; // and let's set our title to the loaded page's name too
 			head.parentNode.removeChild(head); // and remove the h1 header from the loaded page, as we don't need duplicates.
