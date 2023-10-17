@@ -77,6 +77,12 @@ document.addEventListener("DOMContentLoaded", () =>
 			hour -= 12;
 		}
 
+		if (hour == 0)
+		{
+			// we don't want midnight showing up as 0.
+			hour = 12;
+		}
+
 		if(document.getElementById("time"))
 		{
 			document.getElementById("time").innerHTML = `Today is ${month} ${day}, ${year} and the time is ${hour}:${minute}:${second} ${period}.`;
