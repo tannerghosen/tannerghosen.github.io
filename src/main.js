@@ -179,6 +179,7 @@ const LoadPage = (page) =>
 // Show/Hide Buttons
 	if (page == "portfolio") // if the page is Portfolio, make buttons visible.
 	{
+		project = 1;
 		document.getElementById("buttoncontainer").removeAttribute("hidden");
 	}
 	else
