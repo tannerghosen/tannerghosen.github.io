@@ -9,7 +9,7 @@ body
 html, body 
 {
 	height: 100%;
-	background-color: #000;
+	background: #000;
 	color: #FFF;
 	transition: background-color 0.5s ease;
 }
@@ -17,11 +17,12 @@ html, body
 .container {
 	/* flexbox */
 	max-width: 55%; /* we don't need a lot of space */
-	min-height: 100vh; /* screen height*/
+	min-height: 100vh; /* screen height */
 	display: flex;
 	flex-direction: column; /* this makes it so it doesn't add a new line next to the old line */
 	justify-content: center;
 	align-items: center;
+	position: relative;
 }
 
 h1 
@@ -50,28 +51,31 @@ a:hover
 }
 
 .linkcontainer {
-	position: fixed;
 	left: 50%;
 	bottom: 7.5%;
 	transform: translate(-50%, 0%);
 	margin: 0 auto;
-	background-color: #222;
+	background: #222;
 	border: 1px solid #CCC;
 	padding: 7.5px;
+	position: fixed;
 }
 
 .header {
 	transition: all 0.2s ease-out;
-	animation: slidein 0.8s ease-in; /* remove ease-in and keep the following: forwards, 
+	animation: slidein 0.8s ease-in; /* remove ease-in and keep the following for multiple anims: forwards, 
 		anotheranim 3s linear 1s infinite forwards;*/
-	position: fixed;
 	top: 15%;
+	position: fixed;
 }
 
 img 
 {
     width: 43.75vw;
     height: 50vh;
+	border: 1px solid #DDD;
+	border-radius: 4px;
+	padding: 5px;
 }
 
 ul 
@@ -93,14 +97,14 @@ li
 	color: transparent;
 	cursor: pointer;	
 	user-select: none;
-	background-color: #222;
+	background: #222;
 	text-shadow: 0 0 0 #000;
 	transition: background-color 0.5s ease;
 }
 
 .lightmode 
 {
-	background-color: #FFF;
+	background: #FFF;
 	color: #000;
 	transition: background-color 0.5s ease;
 }
@@ -117,15 +121,22 @@ li
 
 .lightmode #lightswitch
 {
-	background-color: #DDD;
+	background: #DDD;
 	text-shadow: 0 0 0 #333;
 	transition: background-color 0.5s ease;
 }
 
 .lightmode .linkcontainer 
 {
-	background-color: #DDD;
+	background: #DDD;
 	border: 1px solid #333;
+}
+
+.lightmode img 
+{
+	border: 1px solid #222;
+	border-radius: 4px;
+	padding: 5px;
 }
 
 /* Slideshow */
@@ -247,5 +258,18 @@ li
 	25%, 75% 
 	{
 		opacity: 0;
+	}
+}
+
+@keyframes rotating 
+{
+	0% 
+	{
+		transform: rotate(0deg);
+	}
+
+	100% 
+	{
+		transform: rotate(360deg);
 	}
 }
