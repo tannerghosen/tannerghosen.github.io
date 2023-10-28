@@ -14,10 +14,12 @@ html, body
 	transition: background-color 0.5s ease;
 }
 
-.container {
+.container 
+{
 	/* flexbox */
 	max-width: 55%; /* we don't need a lot of space */
 	min-height: 100vh; /* screen height */
+	max-height: 100vh;
 	display: flex;
 	flex-direction: column; /* this makes it so it doesn't add a new line next to the old line */
 	justify-content: center;
@@ -39,7 +41,8 @@ h1
 	margin: 0;
 }
 
-a {
+a 
+{
 	text-decoration: none;
 	color: #CCC;
 	transition: all 0.2s ease-out;
@@ -50,7 +53,8 @@ a:hover
 	color: #EEE;
 }
 
-.linkcontainer {
+.linkcontainer 
+{
 	left: 50%;
 	bottom: 7.5%;
 	transform: translate(-50%, 0%);
@@ -61,7 +65,8 @@ a:hover
 	position: fixed;
 }
 
-.header {
+.header 
+{
 	transition: all 0.2s ease-out;
 	animation: slidein 0.8s ease-in; /* remove ease-in and keep the following for multiple anims: forwards, 
 		anotheranim 3s linear 1s infinite forwards;*/
@@ -80,15 +85,15 @@ img
 
 ul 
 {
-  list-style-type: none;
-  margin: 0 auto;
-  padding: 0;
-  overflow: visible;
+	list-style-type: none;
+	margin: 0 auto;
+	padding: 0;
+	overflow: visible;
 }
 
 li 
 {
-  display: inline;
+	display: inline;
 }
 
 /* Light Mode / Dark Mode */
@@ -188,40 +193,49 @@ li
 }
 
 /* Mobile */
-@media (any-pointer: coarse) and (hover: none) and (max-width: 450px) {
-	body {
+@media (any-pointer: coarse) and (hover: none) and (max-width: 450px) 
+{
+	body 
+	{
 		font: normal 45% 'Press Start 2P';
 	}
 
-	.container {
+	.container 
+	{
 		max-width: 55%;
 		max-height: 50%;
 	}
 
-	h1 {
+	h1 
+	{
 		font-size: 150%;
 	}
 
-	.container h2 {
+	.container h2
+	{
 		font-size: 125%;
 	}
 
-	.linkcontainer {
+	.linkcontainer 
+	{
 		width: 60%;
 		left: 50%;
 		bottom: 15%;
 		text-align: center;
 	}
 
-	#buttoncontainer {
+	#buttoncontainer 
+	{
 		bottom: 17.5%;
 	}
 
-	.header {
+	.header
+	{
 		top: 22.5%;
 	}
 
-	html, body {
+	html, body 
+	{
 		margin: 0;
 		height: 100%;
 		overflow: hidden
