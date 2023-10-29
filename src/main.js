@@ -1,7 +1,4 @@
-// JavaScript
-
-// var mode = "";
-// mode was changed from a variable to a localStorage item so like page, we can save that setting too!
+// Variables
 if (!localStorage.getItem("mode"))
 {
 	localStorage.setItem("mode", "dark");
@@ -10,6 +7,7 @@ var project = 1;
 var maxprojects = 4;
 var slideshow = false;
 
+// Functions
 document.addEventListener("DOMContentLoaded", () =>
 {
 

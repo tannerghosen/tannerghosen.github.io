@@ -62,7 +62,7 @@ a:hover
 	background: #222;
 	border: 1px solid #CCC;
 	padding: 7.5px;
-	position: fixed;
+	position: absolute;
 }
 
 .header 
@@ -70,8 +70,9 @@ a:hover
 	transition: all 0.2s ease-out;
 	animation: slidein 0.8s ease-in; /* remove ease-in and keep the following for multiple anims: forwards, 
 		anotheranim 3s linear 1s infinite forwards;*/
-	top: 15%;
-	position: fixed;
+    top: 15%;
+	align-self: center;
+	position: absolute;
 }
 
 img 
@@ -179,7 +180,7 @@ li
 
 #buttoncontainer
 {
-	position: fixed;
+	position: absolute;
 	left: 50%;
 	bottom: 15%;
 	transform: translate(-50%, 0%);
