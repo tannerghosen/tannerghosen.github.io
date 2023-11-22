@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-body
+body 
 {
 	font: normal 75% 'Press Start 2P';
 	margin: 0;
@@ -67,12 +67,15 @@ a:hover
 
 .header 
 {
+	visibility: hidden;
 	transition: all 0.2s ease-out;
-	animation: slidein 0.8s ease-in; /* remove ease-in and keep the following for multiple anims: forwards, 
-		anotheranim 3s linear 1s infinite forwards;*/
-    top: 15%;
+	/*animation: slidein 0.8s ease-in;*/ /*forwards, bounce 0.8s linear 0.8s;*/
+	/* remove ease-in and keep the following for multiple anims: forwards, 
+		anotheranim 3s linear 1s */
+	top: 15%;
 	align-self: center;
 	position: absolute;
+	/*animation-timing-function: cubic-bezier(.5, 0.05, 1, .5);*/
 }
 
 img 
@@ -98,13 +101,12 @@ li
 }
 
 /* Light Mode / Dark Mode */
-#lightswitch
-{
+#lightswitch {
 	color: transparent;
-	cursor: pointer;	
+	cursor: pointer;
 	user-select: none;
 	background: #222;
-	text-shadow: 0 0 0 #000;
+	text-shadow: 0 0 0 #FFF;
 	transition: background-color 0.5s ease;
 }
 
@@ -248,9 +250,9 @@ li
 {
 	0% 
 	{
-		/* the -50%'s are to counteract the fact it overwrites the -50% which translates it to the right of center as it does the slide in */
-		transform: translate(0%, -300%);
+		transform: translate(0%, -900%);
 	}
+
 
 	50% 
 	{
@@ -276,15 +278,47 @@ li
 	}
 }
 
-@keyframes rotating 
+@keyframes rotating
 {
 	0% 
 	{
 		transform: rotate(0deg);
 	}
 
+	50% 
+	{
+		transform: rotate(180deg);
+	}
+
 	100% 
 	{
 		transform: rotate(360deg);
+	}
+}
+
+@keyframes bounce {
+	0%, 100%
+	{
+		transform: translate(0, 0);
+	}
+	10%, 90%
+	{
+		transform: translate(0, -5px);
+	}
+	20%, 80% 
+	{
+		transform: translate(0, -15px);
+	}
+	30%, 70% 
+	{
+		transform: translate(0, -20px);
+	}
+	40%, 60% 
+	{
+		transform: translate(0, -25px);
+	}
+	50% 
+	{
+		transform: translate(0, -30px);
 	}
 }
