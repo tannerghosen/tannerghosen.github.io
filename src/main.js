@@ -5,7 +5,6 @@ if (!localStorage.getItem("mode"))
 }
 var project = 1;
 var maxprojects = 4;
-var slideshow = false;
 // Functions
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -119,18 +118,20 @@ document.addEventListener("DOMContentLoaded", () => {
 	let i = 0; // iterator
 	let text = ""; // text to output
 	let speed = 200; // speed of the typewriter in ms
-	let thepage = localStorage.getItem("lastpage"); // we grab the lastpage so if the page changes we stop the typewriter
+	let thepage = "";
 	function TypeWriter()
 	{
-		if (i < text.length && thepage == localStorage.getItem("lastpage")) // if i < text.length and thepage matches the current page
+		if (i < text.length && thepage == localStorage.getItem("lastpage")) // if i < text.length and thepage matches the current page or if thepage is null (first time visiting)
 		{
 			header.innerHTML += text.charAt(i); // add the letter at i
 			i++; // increase iterator
 			setTimeout(TypeWriter, speed); // recursively call the function after the speed ms
 		}
 	}
-	// this is so we don't get <empty string> errors from trying to get innerHTML too early
+	// this is so we don't get <empty string> from trying to get innerHTML too early
 	setTimeout(() => {
+		thepage = localStorage.getItem("lastpage"); // we grab the lastpage so if the page changes we stop the typewriter
+		console.log(thepage);
 		text = header.innerHTML; // set text to header's innerHTML
 		header.style.visibility = "visible"; // make header visible
 		header.innerHTML = ""; // clear its innerHTML
