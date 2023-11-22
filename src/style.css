@@ -2,7 +2,7 @@
 
 body 
 {
-	font: normal 75% 'Press Start 2P';
+	font: normal 110% Consolas;
 	margin: 0;
 }
 
@@ -20,24 +20,24 @@ html, body
 	max-width: 55%; /* we don't need a lot of space */
 	min-height: 100vh; /* screen height */
 	max-height: 100vh;
+	min-width: 55%;
 	display: flex;
 	flex-direction: column; /* this makes it so it doesn't add a new line next to the old line */
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	
 }
 
 h1 
 {
-	font-size: 200%;
-	font-weight: 400;
+	font: 400 200% 'Press Start 2P';
 	margin: 0;
 }
 
 .container h2 
 {
-	font-size: 150%;
-	font-weight: 400;
+	font: 400 150% 'Press Start 2P';
 	margin: 0;
 }
 
@@ -59,10 +59,17 @@ a:hover
 	bottom: 7.5%;
 	transform: translate(-50%, 0%);
 	margin: 0 auto;
-	background: #222;
+	background: #151515;
 	border: 1px solid #CCC;
 	padding: 7.5px;
 	position: absolute;
+
+}
+
+.headercontainer 
+{
+	top: 5%;
+	position: relative
 }
 
 .header 
@@ -72,9 +79,7 @@ a:hover
 	/*animation: slidein 0.8s ease-in;*/ /*forwards, bounce 0.8s linear 0.8s;*/
 	/* remove ease-in and keep the following for multiple anims: forwards, 
 		anotheranim 3s linear 1s */
-	top: 15%;
-	align-self: center;
-	position: absolute;
+	text-align: center;
 	/*animation-timing-function: cubic-bezier(.5, 0.05, 1, .5);*/
 }
 
@@ -147,6 +152,7 @@ li
 	padding: 5px;
 }
 
+
 /* Slideshow */
 #backbutton, #nextbutton
 {
@@ -200,13 +206,14 @@ li
 {
 	body 
 	{
-		font: normal 45% 'Press Start 2P';
+		font: normal 75% Consolas;
 	}
 
 	.container 
 	{
 		max-width: 55%;
-		max-height: 50%;
+		min-height: 90%;
+
 	}
 
 	h1 
@@ -229,12 +236,12 @@ li
 
 	#buttoncontainer 
 	{
-		bottom: 17.5%;
+		bottom: 25%;
 	}
 
-	.header
+	.headercontainer
 	{
-		top: 22.5%;
+		top: 15.5%;
 	}
 
 	html, body 

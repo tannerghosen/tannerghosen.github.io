@@ -131,7 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	// this is so we don't get <empty string> from trying to get innerHTML too early
 	setTimeout(() => {
 		thepage = localStorage.getItem("lastpage"); // we grab the lastpage so if the page changes we stop the typewriter
-		console.log(thepage);
 		text = header.innerHTML; // set text to header's innerHTML
 		header.style.visibility = "visible"; // make header visible
 		header.innerHTML = ""; // clear its innerHTML
