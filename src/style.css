@@ -14,30 +14,30 @@ html, body
 	transition: background-color 0.5s ease;
 }
 
-.container 
+.container
 {
 	/* flexbox */
-	max-width: 55%; /* we don't need a lot of space */
-	min-height: 100vh; /* screen height */
-	max-height: 100vh;
+	max-width: 50%; /* we don't need a lot of space */
+	min-height: 80vh; /* screen height */
+	max-height: 80vh;
 	min-width: 55%;
 	display: flex;
 	flex-direction: column; /* this makes it so it doesn't add a new line next to the old line */
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	
+	bottom: 2.5%;
 }
 
 h1 
 {
-	font: 400 200% 'Press Start 2P';
+	font: 400 175% 'Press Start 2P';
 	margin: 0;
 }
 
 .container h2 
 {
-	font: 400 150% 'Press Start 2P';
+	font: 400 125% 'Press Start 2P';
 	margin: 0;
 }
 
@@ -190,7 +190,7 @@ li
 {
 	position: absolute;
 	left: 50%;
-	bottom: 15%;
+	bottom: 25%;
 	transform: translate(-50%, 0%);
 	margin: 0 auto;
 	padding: 30px; 
@@ -211,19 +211,19 @@ li
 
 	.container 
 	{
-		max-width: 55%;
+		max-width: 65%;
 		min-height: 90%;
-
+		bottom: 2.5%;
 	}
 
 	h1 
 	{
-		font-size: 150%;
+		font-size: 125%;
 	}
 
 	.container h2
 	{
-		font-size: 125%;
+		font-size: 100%;
 	}
 
 	.linkcontainer 
@@ -236,10 +236,10 @@ li
 
 	#buttoncontainer 
 	{
-		bottom: 25%;
+		bottom: 20%;
 	}
 
-	.headercontainer
+	.headercontainer 
 	{
 		top: 15.5%;
 	}
