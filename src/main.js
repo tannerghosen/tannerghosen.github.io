@@ -4,7 +4,7 @@ if (!localStorage.getItem("mode"))
 	localStorage.setItem("mode", "dark");
 }
 var project = 1;
-var maxprojects = 4;
+var maxprojects = 5;
 // Functions
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	let header = document.getElementById("header");
 	let i = 0; // iterator
 	let text = ""; // text to output
-	let speed = 200; // speed of the typewriter in ms
+	let speed = 250; // speed of the typewriter in ms
 	let thepage = "";
 	function TypeWriter()
 	{
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		{
 			header.innerHTML += text.charAt(i); // add the letter at i
 			i++; // increase iterator
-			setTimeout(TypeWriter, speed); // recursively call the function after the speed ms
+			setTimeout(TypeWriter, speed); // recursively call the function after speed ms
 		}
 	}
 	// this is so we don't get <empty string> from trying to get innerHTML too early
@@ -178,7 +178,8 @@ const LoadPage = (page) =>
 // Show/Hide Buttons
 	if (page == "portfolio") // if the page is Portfolio, make buttons visible.
 	{
-		project = 1;
+		project = 1; // This fixes a bug where it would try to continue from whatever number it was originally on
+		// on page switch (if the site wasn't reloaded)
 		document.getElementById("buttoncontainer").removeAttribute("hidden");
 	}
 	else
