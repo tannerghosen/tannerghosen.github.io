@@ -22,7 +22,7 @@ html, body
 	max-height: 80vh;
 	min-width: 55%;
 	display: flex;
-	flex-direction: column; /* this makes it so it doesn't add a new line next to the old line */
+	flex-direction: column;  /* this makes it so it doesn't add a new line next to the old line */
 	justify-content: center;
 	align-items: center;
 	position: relative;
@@ -39,6 +39,7 @@ h1
 {
 	font: 400 125% 'Press Start 2P';
 	margin: 0;
+	grid-column: span 2;
 }
 
 a 
@@ -203,6 +204,9 @@ li
 }
 
 /* Mobile */
+
+/* The Old Mobile One Size Fit All Style, The Base. */
+/*
 @media (any-pointer: coarse) and (hover: none) and (max-width: 450px) 
 {
 	body 
@@ -250,6 +254,85 @@ li
 		margin: 0;
 		height: 100%;
 		overflow: hidden
+	}
+}*/
+
+/* Smaller Mobile Phones / Tablets */
+@media (any-pointer: coarse) and (hover: none) and (max-width: 767px) 
+{
+	body 
+	{
+		font: normal 85% Consolas;
+	}
+
+	.container 
+	{
+		max-width: 90%;
+		min-height: 85vh;
+		bottom: 2%;
+	}
+
+	h1 
+	{
+		font-size: 150%;
+	}
+
+	.container h2 
+	{
+		font-size: 115%;
+	}
+
+	.linkcontainer 
+	{
+		width: 70%;
+		bottom: 12%;
+		text-align: center;
+	}
+
+	#buttoncontainer 
+	{
+		bottom: 18%;
+	}
+
+	.headercontainer 
+	{
+		top: 12%;
+	}
+}
+
+/* Larger Mobile Devices */
+@media (any-pointer: coarse) and (hover: none) and (min-width: 768px) and (max-width: 1023px) 
+{
+	body 
+	{
+		font: normal 95% Consolas; 
+	}
+
+	.container 
+	{
+		max-width: 60%; 
+		min-height: 85vh; 
+	}
+
+	.container h2 
+	{
+		font-size: 110%; 
+	}
+
+	.linkcontainer 
+	{
+		width: 65%;
+		text-align: center;
+	}
+
+	#buttoncontainer 
+	{
+		bottom: 20%;
+	}
+
+	.headercontainer 
+	{
+		top: 15%;
 	}
 }
 
