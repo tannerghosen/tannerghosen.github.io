@@ -187,7 +187,7 @@ function StringtoHTML(string) // function to convert pages (brought in as string
 {
 	return parser.parseFromString(string, "text/html"); 
 }
-const LoadPage = (page) => // Load page function, to load the pages into our app
+function LoadPage(page) // Load page function, to load the pages into our app
 {
 	let header = document.getElementById("header"); // header is index.html's header
 
