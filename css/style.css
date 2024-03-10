@@ -306,12 +306,12 @@ li
 
 	#buttoncontainer 
 	{
-		bottom: 5%;
+		bottom: 10%;
 	}
 
 	.headercontainer 
 	{
-		top: 17.5%;
+		top: 22.5%;
 	}
 }
 
@@ -356,10 +356,14 @@ li
 	}
 }
 
-@media (any-pointer: coarse) and (hover: none) 
+@media (any-pointer: coarse) and (hover: none) /* Link container specific settings */
 {
 	.linkcontainer 
 	{
+		/* this aligns our link container to the left, centered about halfway up the
+		   page's height. left: 0 sets it all the way to the left. top 50% plus Y
+			-50% from that = 50% up the page.
+		*/
 		position: fixed;
 		left: 0;
 		top: 50%;
@@ -369,12 +373,15 @@ li
 	}
 	.linkcontainer a 
 	{
-        display: block;
-        margin-bottom: 10px; 
+        display: block; /* this treats every link like a block, so it positions our links 
+			in a list-like way instead of it being unstyled and simply made to just fit in the
+			container
+        */
+        margin-bottom: 10px; /* gives a margin of 10px at the bottom of each link */
     }
 	ul 
 	{
-		list-style-type: none;
+		list-style-type: none; 
 		margin: 0;
 		padding: 0;
 		overflow: visible;
@@ -432,7 +439,8 @@ li
 	}
 }
 
-@keyframes bounce {
+@keyframes bounce
+{
 	0%, 100%
 	{
 		transform: translate(0, 0);

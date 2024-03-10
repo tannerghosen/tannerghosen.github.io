@@ -112,7 +112,8 @@ document.addEventListener("DOMContentLoaded", () =>
 			document.getElementById("project" + maxprojects).setAttribute("hidden", "");
 			document.getElementById("project" + project).removeAttribute("hidden");
 		}
-		else {
+		else
+		{
 			project++;
 			document.getElementById("project" + (project - 1)).setAttribute("hidden", "");
 			document.getElementById("project" + project).removeAttribute("hidden");
@@ -156,6 +157,35 @@ document.addEventListener("DOMContentLoaded", () =>
 		header.innerHTML = ""; // clear its innerHTML
 		TypeWriter(); // call typewriter
 	}, 500);*/
+
+	// Image Slideshow (in progress)
+	// More like a carousel because it's automatic.
+	// Might not even be something I use.
+	// Args it takes are direct locations of the images
+	function Slideshow(...args)
+	{
+		let images = [...args];
+		let slideshow = document.getElementById("slideshow");
+		let pos = 0;
+		// might wanna change how this works if I want to ensure it works with portfolio
+		// (i.e. check if project is still the same, otherwise end if)
+		if (slideshow && thepage == localStorage.getItem("lastpage"))
+		{
+			function Display()
+			{
+				slideshow.innerHTML = "<img src='" + images[pos] + "'>";
+			}
+
+			function Next()
+			{
+				pos = (pos + 1) % images.length;
+				Display();
+			}
+
+			Display();
+			setInterval(Next, 3000); 
+		}
+	}
 
 // Router (part 1)
 	const app = document.getElementById("app");
