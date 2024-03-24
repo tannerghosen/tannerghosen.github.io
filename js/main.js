@@ -21,7 +21,8 @@ document.addEventListener("DOMContentLoaded", () =>
 	{
 		LightSwitch();
 		document.body.classList.add("notransition"); //  without this, you'll see the dark mode briefly as it'll do a transition effect to switch to light mode on the code being ran.
-		setTimeout(function () {
+		setTimeout(() =>
+		{
 			document.body.classList.remove("notransition"); // we don't want it forever because that'll mess up future transitions.
 		}, 500);
 	}
@@ -162,28 +163,41 @@ document.addEventListener("DOMContentLoaded", () =>
 	// More like a carousel because it's automatic.
 	// Might not even be something I use.
 	// Args it takes are direct locations of the images
-	function Slideshow(...args)
+	function Slideshow(image, ...args)
 	{
-		let images = [...args];
-		let slideshow = document.getElementById("slideshow");
 		let pos = 0;
+		let slideshow = document.getElementById("slideshow");
+		let images = [...args];
+
+		function Display()
+		{
+			slideshow.innerHTML = "<img id='"+ image +"' src='" + images[pos] + "'>";
+		}
+
+		function Next()
+		{
+			pos = (pos == images.length - 1) ? 0 : pos + 1;
+			Display();
+		}
+
 		// might wanna change how this works if I want to ensure it works with portfolio
 		// (i.e. check if project is still the same, otherwise end if)
 		if (slideshow && thepage == localStorage.getItem("lastpage"))
 		{
-			function Display()
-			{
-				slideshow.innerHTML = "<img src='" + images[pos] + "'>";
-			}
-
-			function Next()
-			{
-				pos = (pos + 1) % images.length;
-				Display();
-			}
-
 			Display();
-			setInterval(Next, 3000); 
+			setInterval(Next, 3000);
+			document.addEventListener('click', (e) =>
+			{
+				if (e.target && e.target.id === image)
+				{
+					image.classList.add("fade");
+					setTimeout(() =>
+					{
+						image.classList.remove("fade");
+					}, 500);
+					Next();
+				}
+			});
 		}
 	}
 
