@@ -18,8 +18,8 @@ html, body
 {
 	/* flexbox */
 	max-width: 65%; /* we don't need a lot of space */
-	height: 80vh; /* screen height */
-	max-height: 80vh;
+	height: 75vh; /* screen height */
+	max-height: 75vh;
 	min-width: 60%;
 	display: flex;
 	flex-direction: column; /* this makes it so it doesn't add a new line next to the old line */
@@ -28,6 +28,14 @@ html, body
 	position: relative;
 	bottom: 2.5%;
 	overflow: hidden;
+}
+
+.flexcontainer 
+{
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	align-content: flex-start;
 }
 
 h1 
@@ -58,20 +66,20 @@ a:hover
 .linkcontainer 
 {
 	left: 50%;
-	bottom: 7.5%;
 	transform: translate(-50%, 0%);
 	margin: 0 auto;
 	background: #151515;
 	border: 1px solid #CCC;
 	padding: 7.5px;
 	position: absolute;
-
 }
 
 .headercontainer 
 {
-	top: 5%;
-	position: relative
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 15vh;
 }
 
 .header 
@@ -298,12 +306,12 @@ li
 
 	h1 
 	{
-		font-size: 150%;
+		font-size: 250%;
 	}
 
 	.container h2 
 	{
-		font-size: 115%;
+		font-size: 165%;
 	}
 
 	.linkcontainer 
@@ -316,12 +324,7 @@ li
 
 	#buttoncontainer 
 	{
-		bottom: 10%;
-	}
-
-	.headercontainer 
-	{
-		top: 22.5%;
+		bottom: 15%;
 	}
 }
 /* Smaller Mobile Phones / Tablets */
@@ -346,12 +349,12 @@ li
 
 	h1 
 	{
-		font-size: 150%;
+		font-size: 200%;
 	}
 
 	.container h2 
 	{
-		font-size: 115%;
+		font-size: 165%;
 	}
 
 	.linkcontainer 
@@ -364,12 +367,7 @@ li
 
 	#buttoncontainer 
 	{
-		bottom: 10%;
-	}
-
-	.headercontainer 
-	{
-		top: 22.5%;
+		bottom: 15%;
 	}
 }
 
@@ -391,9 +389,14 @@ li
 		overflow: hidden;
 	}
 
+	h1 
+	{
+		font-size: 200%;
+	}
+
 	.container h2 
 	{
-		font-size: 110%; 
+		font-size: 165%; 
 	}
 
 	.linkcontainer 
@@ -406,12 +409,7 @@ li
 
 	#buttoncontainer 
 	{
-		bottom: 12.5%;
-	}
-
-	.headercontainer 
-	{
-		top: 25%;
+		bottom: 25%;
 	}
 }
 
@@ -435,7 +433,7 @@ li
 {
 	.container 
 	{
-		top: -2.5%;
+		
 	}
 }
 
@@ -470,6 +468,18 @@ li
 		margin: 0;
 		padding: 0;
 		overflow: visible;
+	}
+
+	.headercontainer 
+	{
+		height: 30vh;
+	}
+	
+	.container 
+	{
+		height: 60vh;
+		max-height: 60vh;
+		justify-content: flex-start; /* align content to the top of container instead of center */
 	}
 }
 
