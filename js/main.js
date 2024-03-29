@@ -207,11 +207,11 @@ document.addEventListener("DOMContentLoaded", () =>
 	if(localStorage.getItem("lastpage")) // if we visited the site before, load the last page.
 	{
 		header.style.visibility = "visible"; // unhide header
-		LoadPage(localStorage.getItem("lastpage"));
+		LoadPage(localStorage.getItem("lastpage"), true);
 	}
 	else // first time we were here, load home and play a funny typewriter animation.
 	{
-		LoadPage("home");
+		LoadPage("home", true);
 		// this is so we don't get <empty string> from trying to get innerHTML too early
 		setTimeout(() =>
 		{
@@ -231,31 +231,30 @@ function StringtoHTML(string) // function to convert pages (brought in as string
 {
 	return parser.parseFromString(string, "text/html"); 
 }
-function LoadPage(page) // Load page function, to load the pages into our app
+				 //file // is it called on page load (i.e. look above)
+function LoadPage(page, isonpageload) // Load page function, to load the pages into our app
 {
-	let header = document.getElementById("header"); // header is index.html's header
+	console.log(page + " " + localStorage.getItem("lastpage"));
+	if (page != localStorage.getItem("lastpage") || isonpageload == true)
+	{
+		let header = document.getElementById("header"); // header is index.html's header
 
-	fetch(`${pages}/${page}.html`) // fetch the page requested from /pages/
-		.then(response => {
-			return response.text() // we grab the content of the page, but it is a string
+		fetch(`${pages}/${page}.html`) // fetch the page requested from /pages/
+			.then(response =>
+			{
+				return response.text() // we grab the content of the page, but it is a string
 			})
-		.then(data => {
-			data = StringtoHTML(data); // we make our data HTML from a string, as it should be
-			app.innerHTML = data.body.innerHTML; // the div id 'app' will contain our string-to-HTML data from the loaded page.
-			let head = document.getElementById("page"); // loaded pages have a h1 header that is the name of the page, with an id of "page"
-			header.innerHTML = head.innerHTML; // let's set index.html's header to match the header from the loaded page
-			document.title = head.innerHTML; // and let's set our title to the loaded page's name too
-			head.parentNode.removeChild(head); // and remove the h1 header from the loaded page, as we don't need duplicates.
-			localStorage.setItem("lastpage", page); // and we set the page here in case we reload or come back later.
-			/*if (page != "home")
+			.then(data =>
 			{
-				history.pushState({ page: page }, null, page); // updates url to have /pagename at the end, adds it to history.
-			}
-			else
-			{
-				history.pushState(null, null, "/");
-			}*/
-		}).catch(error => console.log(error))
+				data = StringtoHTML(data); // we make our data HTML from a string, as it should be
+				app.innerHTML = data.body.innerHTML; // the div id 'app' will contain our string-to-HTML data from the loaded page.
+				let head = document.getElementById("page"); // loaded pages have a h1 header that is the name of the page, with an id of "page"
+				header.innerHTML = head.innerHTML; // let's set index.html's header to match the header from the loaded page
+				document.title = head.innerHTML; // and let's set our title to the loaded page's name too
+				head.parentNode.removeChild(head); // and remove the h1 header from the loaded page, as we don't need duplicates.
+				localStorage.setItem("lastpage", page); // and we set the page here in case we reload or come back later.
+			}).catch(error => console.log(error))
+	}
 
 // Show/Hide Buttons
 	if (page == "portfolio") // if the page is Portfolio, make buttons visible.
@@ -269,10 +268,3 @@ function LoadPage(page) // Load page function, to load the pages into our app
 		document.getElementById("buttoncontainer").setAttribute("hidden", "");
 	}
 }
-
-// Adds page history
-/*window.onpopstate = function (event)
-{
-	const page = event.state ? event.state.page : "home";
-	LoadPage(page);
-}*/

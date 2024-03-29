@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+/* to-do: clean up the stylesheet a bit */
 body 
 {
 	font: normal 110% Consolas;
@@ -324,7 +325,7 @@ li
 
 	#buttoncontainer 
 	{
-		bottom: 15%;
+		bottom: 5%;
 	}
 }
 /* Smaller Mobile Phones / Tablets */
@@ -367,7 +368,7 @@ li
 
 	#buttoncontainer 
 	{
-		bottom: 15%;
+		bottom: 5%;
 	}
 }
 
@@ -409,7 +410,7 @@ li
 
 	#buttoncontainer 
 	{
-		bottom: 25%;
+		bottom: 15%;
 	}
 }
 
@@ -460,14 +461,13 @@ li
 {
 	.linkcontainer 
 	{
-		/* this aligns our link container to the left, centered about halfway up the
-		   page's height. left: 0 sets it all the way to the left. top 50% plus Y
-			-50% from that = 50% up the page.
+		/* this aligns our link container to the left, positioned about around the top of
+		   where our content begins, at 30vh (so 30vh from the top (0vh) of the container it's in)
 		*/
-		position: fixed;
+		position: absolute;
 		left: 0;
-		top: 50%;
-		transform: translateY(-50%);
+		top: 0vh;
+		transform: translateY(30vh);
 		margin: 0;
 		padding: 0;
 	}
