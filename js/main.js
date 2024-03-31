@@ -98,7 +98,8 @@ document.addEventListener("DOMContentLoaded", () =>
 			document.getElementById("project1").setAttribute("hidden", "");
 			document.getElementById("project" + project).removeAttribute("hidden");
 		}
-		else {
+		else
+		{
 			project--;
 			document.getElementById("project" + (project + 1)).setAttribute("hidden", "");
 			document.getElementById("project" + project).removeAttribute("hidden");
@@ -137,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () =>
 	let header = document.getElementById("header");
 	let i = 0; // iterator
 	let text = ""; // text to output
-	let speed = 150; // speed of the typewriter in ms
+	let speed = 100; // speed of the typewriter in ms
 	let thepage = "";
 	function TypeWriter()
 	{
@@ -202,7 +203,6 @@ document.addEventListener("DOMContentLoaded", () =>
 	}
 
 // Router (part 1)
-	const app = document.getElementById("app");
 	
 	if(localStorage.getItem("lastpage")) // if we visited the site before, load the last page.
 	{
@@ -234,7 +234,7 @@ function StringtoHTML(string) // function to convert pages (brought in as string
 				 //file // is it called on page load (i.e. look above)
 function LoadPage(page, isonpageload) // Load page function, to load the pages into our app
 {
-	console.log(page + " " + localStorage.getItem("lastpage"));
+	const app = document.getElementById("app");
 	if (page != localStorage.getItem("lastpage") || isonpageload == true)
 	{
 		let header = document.getElementById("header"); // header is index.html's header

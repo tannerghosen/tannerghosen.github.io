@@ -438,11 +438,11 @@ li
 	}
 }
 
-@media (any-pointer: coarse) and (hover: none) and (orientation:landscape) and (min-width: 600px)
+@media (any-pointer: coarse) and (hover: none) and (orientation:landscape) and (min-width: 600px) and (max-width: 1000px)
 {
 	body 
 	{
-		/*background-color: darkgreen;*/
+		background-color: darkgreen;
 		font: normal 65% Consolas;
 	}
 
