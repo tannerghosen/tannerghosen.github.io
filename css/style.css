@@ -23,9 +23,9 @@ html, body
 	max-height: 75vh;
 	min-width: 60%;
 	display: flex;
-	flex-direction: column; /* this makes it so it doesn't add a new line next to the old line */
-	justify-content: center;
-	align-items: center;
+	flex-direction: column; /* display as a column */
+	justify-content: center; /* align content in center horizontally */
+	align-items: center; /* align content in center vertically */
 	position: relative;
 	bottom: 2.5%;
 	overflow: hidden;
@@ -442,7 +442,7 @@ li
 {
 	body 
 	{
-		background-color: darkgreen;
+		/*background-color: darkgreen;*/
 		font: normal 65% Consolas;
 	}
 
