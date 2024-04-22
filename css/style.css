@@ -287,7 +287,7 @@ li
 {
     body 
     {
-        font-size: 65%;
+        font-size: 70%;
     }
 
     .container 
@@ -303,6 +303,11 @@ li
     {
         bottom: 20%;
     }
+
+	.linkcontainer
+	{
+		font-size: 75%;
+	}
 }
 
 @media (min-width: 430px) and (max-width: 750px),
@@ -311,7 +316,7 @@ li
 {
     body 
     {
-        font-size: 75%;
+        font-size: 80%;
     }
 
     .container 
@@ -327,6 +332,11 @@ li
     {
         bottom: 25%;
     }
+
+	.linkcontainer 
+	{
+		font-size: 75%;
+	}
 }
 
 /* Anims */
