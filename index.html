@@ -13,6 +13,14 @@
 </head>
 <body id="body">
 <div class="flexcontainer">
+<div class="linkcontainer">
+    <a href="javascript:;" class="icon" onclick="NavbarToggle()">
+    Links
+    </a>
+    <div id="links">
+        <a href="javascript:;" onclick="LoadPage('home')">Home</a>    <a href="javascript:;" onclick="LoadPage('about')">About</a>    <a href="javascript:;" onclick="LoadPage('portfolio')">Portfolio</a>    <a href="https://github.com/tannerghosen">GitHub</a>    <a href="javascript:;" id="lightswitch"><span id="lightbulb">💡</span> Toggle Light/Dark Mode</a>
+    </div>
+</div>
 <div class="headercontainer">
 <h1 class="header" id="header"></h1>
 </div>
@@ -26,14 +34,28 @@
 </div>
 <div hidden id="buttoncontainer"><div id="backbutton">Back</div><div style="float: left; padding-right: 10px;"></div><div id="nextbutton">Next</div></div>
 </div>
-<div class="linkcontainer">
+<!--<div class="linkcontainer">
 <ul>
     <li><a href="javascript:;" onclick="LoadPage('home')">Home</a></li>
     <li><a href="javascript:;" onclick="LoadPage('about')">About</a></li>
     <li><a href="javascript:;" onclick="LoadPage('portfolio')">Portfolio</a></li>
     <li><a href="https://github.com/tannerghosen">GitHub</a></li>
 </ul>
-<span id="lightswitch">💡</span> Toggle Light/Dark Mode</div>
+<span id="lightswitch">💡</span> Toggle Light/Dark Mode</div>-->
+<script>
+    // Navbar
+    function NavbarToggle()
+    {
+        console.log("toggling navbar");
+        var x = document.getElementById("links");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        }
+        else {
+            x.style.display = "block";
+        }
+    }
+</script>
 <script src="js/main.js"></script>
 </body>
 </html>
