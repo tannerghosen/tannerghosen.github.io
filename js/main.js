@@ -269,3 +269,17 @@ function LoadPage(page, isonpageload) // Load page function, to load the pages i
 		document.getElementById("buttoncontainer").setAttribute("hidden", "");
 	}
 }
+
+// Navbar
+function NavbarToggle()
+{
+	var x = document.getElementById("links");
+	if (x.style.display === "block")
+	{
+		x.style.display = "none";
+	}
+	else
+	{
+		x.style.display = "block";
+	}
+}
