@@ -161,48 +161,6 @@ document.addEventListener("DOMContentLoaded", () =>
 		TypeWriter(); // call typewriter
 	}, 500);*/
 
-	// Image Slideshow (in progress)
-	// More like a carousel because it's automatic.
-	// Might not even be something I use.
-	// Args it takes are direct locations of the images
-	function Slideshow(image, ...args)
-	{
-		let pos = 0;
-		let slideshow = document.getElementById("slideshow");
-		let images = [...args];
-
-		function Display()
-		{
-			slideshow.innerHTML = "<img id='"+ image +"' src='" + images[pos] + "'>";
-		}
-
-		function Next()
-		{
-			pos = (pos == images.length - 1) ? 0 : pos + 1;
-			Display();
-		}
-
-		// might wanna change how this works if I want to ensure it works with portfolio
-		// (i.e. check if project is still the same, otherwise end if)
-		if (slideshow && thepage == localStorage.getItem("lastpage"))
-		{
-			Display();
-			setInterval(Next, 3000);
-			document.addEventListener('click', (e) =>
-			{
-				if (e.target && e.target.id === image)
-				{
-					image.classList.add("fade");
-					setTimeout(() =>
-					{
-						image.classList.remove("fade");
-					}, 500);
-					Next();
-				}
-			});
-		}
-	}
-
 // Router (part 1)
 	
 	if(localStorage.getItem("lastpage")) // if we visited the site before, load the last page.
@@ -232,11 +190,12 @@ function StringtoHTML(string) // function to convert pages (brought in as string
 {
 	return parser.parseFromString(string, "text/html"); 
 }
-				 //file // is it called on page load (i.e. look above)
-function LoadPage(page, isonpageload) // Load page function, to load the pages into our app
+				 //file // is it called on site being visited / loaded (added so we don't have missing pages on refreshes because page == lastpage)
+function LoadPage(page, isvisitload) // Load page function, to load the pages into our app
 {
 	const app = document.getElementById("app");
-	if (page != localStorage.getItem("lastpage") || isonpageload == true)
+	// if page is different from lastpage OR if this is being called on page loading
+	if (page != localStorage.getItem("lastpage") || isvisitload == true)
 	{
 		let header = document.getElementById("header"); // header is index.html's header
 
@@ -254,7 +213,12 @@ function LoadPage(page, isonpageload) // Load page function, to load the pages i
 				document.title = head.innerHTML; // and let's set our title to the loaded page's name too
 				head.parentNode.removeChild(head); // and remove the h1 header from the loaded page, as we don't need duplicates.
 				localStorage.setItem("lastpage", page); // and we set the page here in case we reload or come back later.
-			}).catch(error => console.log(error))
+			})
+			.catch(() =>
+			{
+				LoadPage("home"); // we can probably handle this better, but this works for now.
+				console.error("LoadPage had an error getting the page '" + page + "'. Maybe it's wrong or missing?");
+			})
 	}
 
 // Show/Hide Buttons
@@ -274,12 +238,5 @@ function LoadPage(page, isonpageload) // Load page function, to load the pages i
 function NavbarToggle()
 {
 	var x = document.getElementById("links");
-	if (x.style.display === "block")
-	{
-		x.style.display = "none";
-	}
-	else
-	{
-		x.style.display = "block";
-	}
+	x.style.display = x.style.display === "block" ? "none" : "block";
 }
