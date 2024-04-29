@@ -199,11 +199,21 @@ function LoadPage(page, isvisitload) // Load page function, to load the pages in
 	{
 		let header = document.getElementById("header"); // header is index.html's header
 
-		fetch(`${pages}/${page}.html`) // fetch the page requested from /pages/
+		fetch(`${pages}/${page}.html`, { method: 'HEAD' }) // check to see if the file exists first
 			.then(response =>
 			{
-				return response.text() // we grab the content of the page, but it is a string
+				if (response.ok) // if it does
+				{
+					return fetch(`${pages}/${page}.html`); // fetch the page requested from /pages/
+				}
+				else // if it doesn't
+				{
+					// load the error page
+					LoadPage("error"); // we can probably handle this better, but this works for now.
+					console.error("LoadPage had an error getting the page '" + page + "'. Maybe it's wrong or missing?");
+				}
 			})
+			.then(response => response.text())
 			.then(data =>
 			{
 				data = StringtoHTML(data); // we make our data HTML from a string, as it should be
@@ -216,8 +226,8 @@ function LoadPage(page, isvisitload) // Load page function, to load the pages in
 			})
 			.catch(() =>
 			{
-				LoadPage("home"); // we can probably handle this better, but this works for now.
-				console.error("LoadPage had an error getting the page '" + page + "'. Maybe it's wrong or missing?");
+				//LoadPage("error"); // we can probably handle this better, but this works for now.
+				//console.error("LoadPage had an error getting the page '" + page + "'. Maybe it's wrong or missing?");
 			})
 	}
 
