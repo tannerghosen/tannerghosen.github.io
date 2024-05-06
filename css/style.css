@@ -280,7 +280,7 @@ li
 
 /* Responsive */
 /* to work on */
-@media (min-width: 0) and (max-width: 700px)
+@media (min-width: 0) and (max-width: 750px)
 {
     body 
     {
@@ -304,7 +304,12 @@ li
 
 	.linkcontainer 
 	{
-		font-size: 120%;
+		font-size: 85%;
+	}
+	.linkcontainer a 
+	{
+		float: left;
+		padding: 0px 5px;
 	}
 }
 
