@@ -24,8 +24,8 @@ html, body
 	min-width: 60%;
 	display: flex;
 	flex-direction: column; /* display as a column */
-	justify-content: center; /* align content in center horizontally */
 	align-items: center; /* align content in center vertically */
+	justify-content: center; /* align content in center horizontally */
 	position: relative;
 	bottom: 2.5%;
 	overflow: hidden;
@@ -331,21 +331,61 @@ li
 	}
 }
 
+@media (min-width: 0) and (max-width: 750px) and (pointer: coarse) /* to improve - the whole mobile layout */
+{
+	body 
+	{
+		font-size: 70%;
+	}
+
+    .container 
+    {
+        height: 55vh; /* screen height */
+        max-height: 60vh;
+        max-width: 60%;
+        top: 5%;
+        overflow: hidden;
+		justify-content: flex-start;
+		padding: 10vh 0 0 0;
+    }
+
+    #buttoncontainer 
+    {
+        bottom: 25%;
+    }
+
+	.linkcontainer 
+	{
+		font-size: 100%;
+	}
+
+	.linkcontainer a 
+	{
+		float: left;
+		padding: 0px 5px;
+	}
+
+	.headercontainer 
+	{
+		height: 10vh;
+	}
+}
+
 @media (min-height: 351px) and (max-height: 600px) and (pointer: coarse)
 {
     body 
     {
-        font-size: 55%;
+        font-size: 60%;
     }
 
-    .container 
-    {
-        height: 60vh; /* screen height */
-        max-height: 65vh;
-        max-width: 85%;
-        top: 5%;
-        overflow: hidden;
-    }
+	.container 
+	{
+		height: 60vh; /* screen height */
+		max-height: 65vh;
+		max-width: 85%;
+		top: 5%;
+		overflow: hidden;
+	}
 
     #buttoncontainer 
     {
@@ -360,6 +400,13 @@ li
 	.headercontainer 
 	{
 		height: 10vh;
+	}
+
+	.project 
+	{
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: wrap;
 	}
 }
 
