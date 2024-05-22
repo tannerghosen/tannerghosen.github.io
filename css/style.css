@@ -362,6 +362,7 @@ li
 
 	.project 
 	{
+		height: 20vh;
 		display: flex;
 		align-items: flex-start;
 		flex-wrap: wrap;
@@ -396,7 +397,7 @@ li
 
 	.project 
 	{
-		height: 100px;
+		height: 15vh;
 		display: flex;
 		align-items: flex-start;
 		flex-wrap: wrap;
