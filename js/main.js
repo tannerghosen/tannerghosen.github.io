@@ -3,6 +3,10 @@ if (!localStorage.getItem("mode"))
 {
 	localStorage.setItem("mode", "dark");
 }
+if (!localStorage.getItem("audio"))
+{
+	localStorage.setItem("audio", "off");
+}
 var project = 1;
 var maxprojects = 5;
 
@@ -150,6 +154,7 @@ document.addEventListener("DOMContentLoaded", () =>
 			setTimeout(TypeWriter, speed); // recursively call the function after speed ms
 		}
 	}
+
 	// uncomment this for every time a user visits the site
 	// this is so we don't get <empty string> from trying to get innerHTML too early
 	/*setTimeout(() =>
@@ -161,7 +166,18 @@ document.addEventListener("DOMContentLoaded", () =>
 		TypeWriter(); // call typewriter
 	}, 500);*/
 
-// Router (part 1)
+	// Audio (for auditory effects)
+	function MakeSound(file, volume)
+	{
+		if (localStorage.getItem("audio") != "off")
+		{
+			const Sound = new Audio(file);
+			Sound.volume = volume;
+			Sound.play();
+		}
+	}
+
+	// Router (part 1)
 	
 	if(localStorage.getItem("lastpage")) // if we visited the site before, load the last page.
 	{
@@ -185,11 +201,7 @@ document.addEventListener("DOMContentLoaded", () =>
 
 // Router (part 2)
 const pages = "./pages"; // directory of our pages.
-const parser = new DOMParser(); // create a DOMParser to parse our pages.
-function StringtoHTML(string) // function to convert pages (brought in as strings) to HTML code to put into our app.
-{
-	return parser.parseFromString(string, "text/html"); 
-}
+
 				 //file // is it called on site being visited / loaded (added so we don't have missing pages on refreshes because page == lastpage)
 function LoadPage(page, isvisitload) // Load page function, to load the pages into our app
 {
@@ -199,12 +211,12 @@ function LoadPage(page, isvisitload) // Load page function, to load the pages in
 	{
 		let header = document.getElementById("header"); // header is index.html's header
 
-		fetch(`${pages}/${page}.html`, { method: 'HEAD' }) // check to see if the file exists first
+		fetch(`${pages}/${page}.json`, { method: 'HEAD' }) // check to see if the file exists first
 			.then(response =>
 			{
 				if (response.ok) // if it does
 				{
-					return fetch(`${pages}/${page}.html`); // fetch the page requested from /pages/
+					return fetch(`${pages}/${page}.json`); // fetch the page requested from /pages/
 				}
 				else // if it doesn't
 				{
@@ -216,12 +228,11 @@ function LoadPage(page, isvisitload) // Load page function, to load the pages in
 			.then(response => response.text())
 			.then(data =>
 			{
-				data = StringtoHTML(data); // we make our data HTML from a string, as it should be
-				app.innerHTML = data.body.innerHTML; // the div id 'app' will contain our string-to-HTML data from the loaded page.
-				let head = document.getElementById("page"); // loaded pages have a h1 header that is the name of the page, with an id of "page"
-				header.innerHTML = head.innerHTML; // let's set index.html's header to match the header from the loaded page
-				document.title = head.innerHTML; // and let's set our title to the loaded page's name too
-				head.parentNode.removeChild(head); // and remove the h1 header from the loaded page, as we don't need duplicates.
+				data = JSON.parse(data); // we parse our JSON string into an object
+				app.innerHTML = data.content; // the div id 'app' will contain our string-to-HTML data from the loaded page.
+				let pagename = data.page; //document.getElementById("page"); // loaded pages have a h1 header that is the name of the page, with an id of "page"
+				header.innerHTML = pagename; //head.innerHTML; // let's set index.html's header to match the header from the loaded page
+				document.title = pagename; //head.innerHTML; // and let's set our title to the loaded page's name too
 				localStorage.setItem("lastpage", page); // and we set the page here in case we reload or come back later.
 			})
 			.catch(() =>
