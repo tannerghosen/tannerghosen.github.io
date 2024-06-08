@@ -219,6 +219,12 @@ li
 	animation: fade 0.5s linear;
 }
 
+/* Accessibility */
+.accesstext 
+{
+	font-family: sans-serif, Arial, Helvetica;
+}
+
 /* Navbar */
 .linkcontainer
 {

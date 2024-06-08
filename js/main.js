@@ -228,11 +228,11 @@ function LoadPage(page, isvisitload) // Load page function, to load the pages in
 			.then(response => response.text())
 			.then(data =>
 			{
-				data = JSON.parse(data); // we parse our JSON string into an object
-				app.innerHTML = data.content; // the div id 'app' will contain our string-to-HTML data from the loaded page.
-				let pagename = data.page; //document.getElementById("page"); // loaded pages have a h1 header that is the name of the page, with an id of "page"
-				header.innerHTML = pagename; //head.innerHTML; // let's set index.html's header to match the header from the loaded page
-				document.title = pagename; //head.innerHTML; // and let's set our title to the loaded page's name too
+				data = JSON.parse(data); // we parse our JSON string into an object we can access
+				app.innerHTML = data.content; // the div id 'app' will contain our content property from the loaded page JSON.
+				let pagename = data.page; // loaded pages have a page property that is the name of the page
+				header.innerHTML = pagename; // we set our header to the pagename...
+				document.title = pagename;  // as well as the document.title
 				localStorage.setItem("lastpage", page); // and we set the page here in case we reload or come back later.
 			})
 			.catch(() =>
