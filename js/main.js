@@ -8,7 +8,7 @@ if (!localStorage.getItem("audio"))
 	localStorage.setItem("audio", "off");
 }
 var project = 1;
-var maxprojects = 5;
+var maxprojects = 0;
 
 // Functions
 document.addEventListener("DOMContentLoaded", () =>
@@ -51,7 +51,9 @@ document.addEventListener("DOMContentLoaded", () =>
 		// time.getMonth()+1 if you use x/x/xxxx for day format
 		let time = new Date();
 		let months = ["Janurary", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-		let [month, day, year, hour, minute, second, period] = [months[time.getMonth()], time.getDate(), time.getFullYear(), time.getHours(), time.getMinutes(), time.getSeconds(), "AM"];
+		let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		let [month, day, year, hour, minute, second, period, weekday] = [months[time.getMonth()], time.getDate(), time.getFullYear(), time.getHours(), time.getMinutes(), time.getSeconds(), "AM", days[time.getDay()]];
+
 		// it will only show the minute/second without a 0 in front of it (should it be less than 10) without these two ifs
 		if (minute < 10)
 		{
@@ -72,21 +74,21 @@ document.addEventListener("DOMContentLoaded", () =>
 			period = "AM";
 		}
 
+		// time uses the 24 hour clock, we want a 12 hour clock, so remove 12 hours if it's greater than that.
 		if (hour > 12)
 		{
-			// time uses the 24 hour clock, we want a normal clock, so remove 12 hours if it's greater than that.
 			hour -= 12;
 		}
 
+		// we don't want midnight showing up as 0.
 		if (hour == 0)
 		{
-			// we don't want midnight showing up as 0.
 			hour = 12;
 		}
 
 		if (document.getElementById("time"))
 		{
-			document.getElementById("time").innerHTML = `Today is ${month} ${day}, ${year} and the time is ${hour}:${minute}:${second} ${period}.`;
+			document.getElementById("time").innerHTML = `Today is ${weekday}, ${month} ${day}, ${year} and the time is ${hour}:${minute}:${second} ${period}.`;
 		}
 	}
 
@@ -234,6 +236,10 @@ function LoadPage(page, isvisitload) // Load page function, to load the pages in
 				header.innerHTML = pagename; // we set our header to the pagename...
 				document.title = pagename;  // as well as the document.title
 				localStorage.setItem("lastpage", page); // and we set the page here in case we reload or come back later.
+				if (page === "portfolio" && maxprojects != data.projects) // if the page is portfolio and maxprojects doesn't equal the property data.projects
+				{
+					maxprojects = data.projects; // we set it to it
+				}
 			})
 			.catch(() =>
 			{
