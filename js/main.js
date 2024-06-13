@@ -3,10 +3,6 @@ if (!localStorage.getItem("mode"))
 {
 	localStorage.setItem("mode", "dark");
 }
-if (!localStorage.getItem("audio"))
-{
-	localStorage.setItem("audio", "off");
-}
 var project = 1;
 var maxprojects = 0;
 
@@ -33,16 +29,8 @@ document.addEventListener("DOMContentLoaded", () =>
 
 	document.getElementById("lightswitch").addEventListener("click", () =>
 	{
-		if (localStorage.getItem("mode") == "dark")
-		{
-			localStorage.setItem("mode", "light"); // we set it to light mode if it was dark mode
-			LightSwitch();
-		}
-		else if (localStorage.getItem("mode") == "light")
-		{
-			localStorage.setItem("mode", "dark"); // vice versa of above
-			LightSwitch();
-		}
+		localStorage.setItem("mode", localStorage.getItem("mode") == "dark" ? "light" : "dark");
+		LightSwitch();
 	});
 
 	// Time Function
@@ -167,17 +155,6 @@ document.addEventListener("DOMContentLoaded", () =>
 		header.innerHTML = ""; // clear its innerHTML
 		TypeWriter(); // call typewriter
 	}, 500);*/
-
-	// Audio (for auditory effects)
-	function MakeSound(file, volume)
-	{
-		if (localStorage.getItem("audio") != "off")
-		{
-			const Sound = new Audio(file);
-			Sound.volume = volume;
-			Sound.play();
-		}
-	}
 
 	// Router (part 1)
 	

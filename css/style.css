@@ -386,7 +386,7 @@ li
     {
         height: 60vh; /* screen height */
         max-height: 65vh;
-        max-width: 95%;
+        max-width: 75%;
         top: 5%;
         overflow: hidden;
 	}
