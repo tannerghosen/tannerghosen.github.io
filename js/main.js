@@ -131,17 +131,20 @@ document.addEventListener("DOMContentLoaded", () =>
 
 	// Typewriter (for the neat header effect)
 	let header = document.getElementById("header");
-	let i = 0; // iterator
-	let text = ""; // text to output
-	let speed = 100; // speed of the typewriter in ms
-	let thepage = "";
-	function TypeWriter()
+	function TypeWriter(Text, ThePage, I = 0)
 	{
+		let i = I; // iterator
+		let text = Text; // text to output
+		let speed = 100; // speed of the typewriter in ms
+		let thepage = ThePage; // the page
+		let debugtime = new Date();
+		console.log(debugtime.getHours() + ":" + debugtime.getMinutes() + ":" + debugtime.getSeconds() + " TypeWriter was called! "+ i + " " + text + " " + thepage);
 		if (i < text.length && thepage == localStorage.getItem("lastpage")) // if i < text.length and thepage matches the current page or if thepage is null (first time visiting)
 		{
 			header.innerHTML += text.charAt(i); // add the letter at i
+			console.log("Header: " + header.innerHTML);
 			i++; // increase iterator
-			setTimeout(TypeWriter, speed); // recursively call the function after speed ms
+			setTimeout(() => { TypeWriter(text, thepage, i) }, speed); // recursively call the function after speed ms
 		}
 	}
 
@@ -157,7 +160,6 @@ document.addEventListener("DOMContentLoaded", () =>
 	}, 500);*/
 
 	// Router (part 1)
-	
 	if(localStorage.getItem("lastpage")) // if we visited the site before, load the last page.
 	{
 		header.style.visibility = "visible"; // unhide header
@@ -173,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () =>
 			text = header.innerHTML; // set text to header's innerHTML
 			header.style.visibility = "visible"; // make header visible
 			header.innerHTML = ""; // clear its innerHTML
-			TypeWriter(); // call typewriter
+			TypeWriter(text, thepage); // call typewriter
 		}, 500);
 	}
 });
@@ -181,12 +183,12 @@ document.addEventListener("DOMContentLoaded", () =>
 // Router (part 2)
 const pages = "./pages"; // directory of our pages.
 
-				 //file // is it called on site being visited / loaded (added so we don't have missing pages on refreshes because page == lastpage)
-function LoadPage(page, isvisitload) // Load page function, to load the pages into our app
+				 //file // is it called on page load (added so we don't have missing pages on refreshes because page == lastpage)
+function LoadPage(page, isitonpageload) // Load page function, to load the pages into our app
 {
 	const app = document.getElementById("app");
 	// if page is different from lastpage OR if this is being called on page loading
-	if (page != localStorage.getItem("lastpage") || isvisitload == true)
+	if (page != localStorage.getItem("lastpage") || isitonpageload == true)
 	{
 		let header = document.getElementById("header"); // header is index.html's header
 
