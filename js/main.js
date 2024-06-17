@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () =>
 		text = header.innerHTML; // set text to header's innerHTML
 		header.style.visibility = "visible"; // make header visible
 		header.innerHTML = ""; // clear its innerHTML
-		TypeWriter(); // call typewriter
+		TypeWriter(text, thepage, 0); // call typewriter
 	}, 500);*/
 
 	// Router (part 1)
