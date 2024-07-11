@@ -5,10 +5,24 @@ if (!localStorage.getItem("mode"))
 }
 var project = 1;
 var maxprojects = 0;
+var quote = null;
 
 // Functions
 document.addEventListener("DOMContentLoaded", () =>
 {
+	// Mobile Check
+	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+	{
+		console.log('mobile');
+		let link = document.createElement("link");
+		link.href = "./css/mobile.css";
+		link.rel = "stylesheet";
+		document.head.appendChild(link);
+	}
+	else
+	{
+		console.log('not mobile')
+	}
 
 	// Light/Dark Mode Function
 	function LightSwitch()
