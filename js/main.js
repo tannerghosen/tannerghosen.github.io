@@ -5,7 +5,6 @@ if (!localStorage.getItem("mode"))
 }
 var project = 1;
 var maxprojects = 0;
-var quote = null;
 
 // Functions
 document.addEventListener("DOMContentLoaded", () =>
@@ -151,12 +150,9 @@ document.addEventListener("DOMContentLoaded", () =>
 		let text = Text; // text to output
 		let speed = 100; // speed of the typewriter in ms
 		let thepage = ThePage; // the page
-		let debugtime = new Date();
-		console.log(debugtime.getHours() + ":" + debugtime.getMinutes() + ":" + debugtime.getSeconds() + " TypeWriter was called! "+ i + " " + text + " " + thepage);
 		if (i < text.length && thepage == localStorage.getItem("lastpage")) // if i < text.length and thepage matches the current page or if thepage is null (first time visiting)
 		{
 			header.innerHTML += text.charAt(i); // add the letter at i
-			console.log("Header: " + header.innerHTML);
 			i++; // increase iterator
 			setTimeout(() => { TypeWriter(text, thepage, i) }, speed); // recursively call the function after speed ms
 		}
