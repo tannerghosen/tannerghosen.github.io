@@ -2,18 +2,29 @@
 {
 	body 
 	{
-		font-size: 70%;
+		font-size: 80%;
 	}
 
 	.container 
 	{
-		height: 55vh; /* screen height */
-		max-height: 60vh;
+		height: 60vh; /* screen height */
+		max-height: 65vh;
 		max-width: 60%;
 		top: 5%;
 		overflow: hidden;
-		justify-content: flex-start;
-		padding: 10vh 0 0 0;
+	}
+
+	h1 
+	{
+		font: 400 125% 'Press Start 2P';
+		margin: 0;
+	}
+
+	.container h2 
+	{
+		font: 400 90% 'Press Start 2P';
+		margin: 0;
+		grid-column: span 2;
 	}
 
 	#buttoncontainer 
@@ -42,23 +53,34 @@
 {
 	body 
 	{
-		font-size: 70%;
+		font-size: 80%;
 	}
 
     .container 
     {
-        height: 55vh; /* screen height */
-        max-height: 60vh;
+        height: 60vh; /* screen height */
+        max-height: 65vh;
         max-width: 60%;
         top: 5%;
         overflow: hidden;
-		justify-content: flex-start;
-		padding: 10vh 0 0 0;
     }
+	
+	h1 
+	{
+		font: 400 125% 'Press Start 2P';
+		margin: 0;
+	}
+
+	.container h2 
+	{
+		font: 400 90% 'Press Start 2P';
+		margin: 0;
+		grid-column: span 2;
+	}
 
     #buttoncontainer 
     {
-        bottom: 25%;
+        bottom: 15%;
     }
 
 	.linkcontainer 
@@ -81,7 +103,7 @@
 {
     body 
     {
-        font-size: 60%;
+        font-size: 70%;
     }
 
 	.container 
@@ -91,6 +113,19 @@
 		max-width: 85%;
 		top: 5%;
 		overflow: hidden;
+	}
+
+	h1 
+	{
+		font: 400 100% 'Press Start 2P';
+		margin: 0;
+	}
+
+	.container h2 
+	{
+		font: 400 65% 'Press Start 2P';
+		margin: 0;
+		grid-column: span 2;
 	}
 
     #buttoncontainer 
@@ -121,7 +156,7 @@
 {
     body 
     {
-        font-size: 50%;
+        font-size: 60%;
     }
 
     .container 
@@ -131,6 +166,19 @@
         max-width: 75%;
         top: 5%;
         overflow: hidden;
+	}
+
+	h1 
+	{
+		font: 400 90% 'Press Start 2P';
+		margin: 0;
+	}
+
+	.container h2 
+	{
+		font: 400 55% 'Press Start 2P';
+		margin: 0;
+		grid-column: span 2;
 	}
 
     #buttoncontainer 
