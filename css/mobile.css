@@ -9,7 +9,7 @@
 	{
 		height: 60vh; /* screen height */
 		max-height: 65vh;
-		max-width: 60%;
+		max-width: 75%;
 		top: 5%;
 		overflow: hidden;
 	}
@@ -60,7 +60,7 @@
     {
         height: 60vh; /* screen height */
         max-height: 65vh;
-        max-width: 60%;
+        max-width: 75%;
         top: 5%;
         overflow: hidden;
     }
@@ -163,7 +163,7 @@
     {
         height: 60vh; /* screen height */
         max-height: 65vh;
-        max-width: 75%;
+        max-width: 95%;
         top: 5%;
         overflow: hidden;
 	}
