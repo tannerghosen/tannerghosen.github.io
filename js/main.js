@@ -232,8 +232,10 @@ function LoadPage(page, isitonpageload) // Load page function, to load the pages
 			})
 			.catch(() =>
 			{
-				//LoadPage("error"); // we can probably handle this better, but this works for now.
-				//console.error("LoadPage had an error getting the page '" + page + "'. Maybe it's wrong or missing?");
+				// I can only imagine this would happen if the user loses their internet connection, or the website isn't reachable.
+				header.innerHTML = "Uh oh!";
+				app.innerHTML = "<p>An error occured while loading a page. Either your internet connection is down, or the website's down. To verify, please refresh the page and check your internet connection to see if it's still connected.</p>";
+				console.error("LoadPage had an error getting the page '" + page + "'. Maybe it's an internet issue or an issue reaching the website?");
 			})
 	}
 
