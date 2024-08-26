@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () =>
 	}
 
 	// uncomment this for every time a user visits the site
-	// this is so we don't get <empty string> from trying to get innerHTML too early
+	// this is so we don't get <empty string> from trying to use innerHTML too early
 	/*setTimeout(() =>
 	{
 		thepage = localStorage.getItem("lastpage"); // we grab the lastpage so if the page changes we stop the typewriter
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () =>
 	else // first time we were here, load home and play a funny typewriter animation.
 	{
 		LoadPage("home", true);
-		// this is so we don't get <empty string> from trying to get innerHTML too early
+		// this is so we don't get <empty string> from trying to use innerHTML too early
 		setTimeout(() =>
 		{
 			thepage = localStorage.getItem("lastpage"); // we grab the lastpage so if the page changes we stop the typewriter
@@ -232,7 +232,7 @@ function LoadPage(page, isitonpageload) // Load page function, to load the pages
 			})
 			.catch(() =>
 			{
-				// I can only imagine this would happen if the user loses their internet connection, or the website isn't reachable.
+				// I can only imagine this would happen if the user loses their internet connection, the website isn't reachable, or if CORS is enforced and this is locally without a server.
 				header.innerHTML = "Uh oh!";
 				app.innerHTML = "<p>An error occured while loading a page. Either your internet connection is down, or the website's down. To verify, please refresh the page and check your internet connection to see if it's still connected.</p>";
 				console.error("LoadPage had an error getting the page '" + page + "'. Maybe it's an internet issue or an issue reaching the website?");
@@ -255,6 +255,6 @@ function LoadPage(page, isitonpageload) // Load page function, to load the pages
 // Navbar
 function NavbarToggle()
 {
-	var x = document.getElementById("links");
-	x.style.display = x.style.display === "block" ? "none" : "block";
+	let l = document.getElementById("links");
+	l.style.display = l.style.display === "block" ? "none" : "block";
 }
