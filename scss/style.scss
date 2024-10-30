@@ -1,5 +1,4 @@
 @import 'variables';
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 /* to-do: clean up the stylesheet a bit */
 body 
@@ -93,6 +92,11 @@ img
 	padding: 5px;
 }
 
+#links, #linksthebutton
+{
+	font-family: $psfont;
+}
+
 /*ul 
 {
 	list-style-type: none;
@@ -109,7 +113,7 @@ li
 /* Light Mode / Dark Mode */
 #lightswitch 
 {
-	color: transparent;
+	color: rgba(255, 255, 255, 0.5); 
 	cursor: pointer;
 	user-select: none;
 	text-shadow: 0 0 0 $lightergray;
@@ -241,6 +245,7 @@ li
 
 .linkcontainer a 
 {
+	margin-right: auto;
 	float: left;
 	padding: 0px 10px
 }
@@ -252,7 +257,10 @@ li
 
 .linkcontainer #lightbulb
 {
-	font-size: 60%;
+	font-size: 75%;
+	float: right;
+	display: flex;
+	align-items: center;
 }
 
 /* Responsive */

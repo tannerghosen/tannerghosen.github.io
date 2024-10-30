@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () =>
 		link.href = "./css/mobile.css";
 		link.rel = "stylesheet";
 		document.head.appendChild(link);
+		let navbar = document.getElementById("links");
+		navbar.innerHTML = ""
 	}
 	else
 	{
