@@ -26,6 +26,9 @@
   #buttoncontainer {
     bottom: 25%;
   }
+  .linkcontainer {
+    font-size: 85%;
+  }
   .linkcontainer a {
     float: left;
     padding: 0px 5px;
@@ -56,6 +59,9 @@
   }
   #buttoncontainer {
     bottom: 15%;
+  }
+  .linkcontainer {
+    font-size: 77.5%;
   }
   .linkcontainer a {
     float: left;

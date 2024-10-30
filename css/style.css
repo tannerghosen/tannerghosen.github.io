@@ -164,7 +164,7 @@ li
 #buttoncontainer {
   position: absolute;
   left: 50%;
-  bottom: 15%;
+  bottom: 7.5%;
   transform: translate(-50%, 0%);
   margin: 0 auto;
   padding: 30px;
@@ -177,8 +177,7 @@ li
 /* Misc */
 .project {
   height: 200px;
-  display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
 }
 
@@ -218,6 +217,12 @@ li
   float: right;
   display: flex;
   align-items: center;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 15vh;
 }
 
 /* Responsive */

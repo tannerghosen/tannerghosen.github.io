@@ -245,10 +245,12 @@ function LoadPage(page, isitonpageload) // Load page function, to load the pages
 		project = 1; // This fixes a bug where it would try to continue from whatever number it was originally on
 		// on page switch (if the site wasn't reloaded)
 		document.getElementById("buttoncontainer").removeAttribute("hidden");
+		document.getElementById("app").style = "height: 35vh;";
 	}
 	else
 	{
 		document.getElementById("buttoncontainer").setAttribute("hidden", "");
+		document.getElementById("app").style = "height: 15vh;";
 	}
 }
 
