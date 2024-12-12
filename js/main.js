@@ -5,7 +5,6 @@ if (!localStorage.getItem("mode"))
 }
 var project = 1;
 var maxprojects = 0;
-
 // Functions
 document.addEventListener("DOMContentLoaded", () =>
 {
@@ -142,51 +141,15 @@ document.addEventListener("DOMContentLoaded", () =>
 		}
 	});
 
-	// Typewriter (for the neat header effect)
-	let header = document.getElementById("header");
-	function TypeWriter(Text, ThePage, I = 0)
-	{
-		let i = I; // iterator
-		let text = Text; // text to output
-		let speed = 100; // speed of the typewriter in ms
-		let thepage = ThePage; // the page
-		if (i < text.length && thepage == localStorage.getItem("lastpage")) // if i < text.length and thepage matches the current page or if thepage is null (first time visiting)
-		{
-			header.innerHTML += text.charAt(i); // add the letter at i
-			i++; // increase iterator
-			setTimeout(() => { TypeWriter(text, thepage, i) }, speed); // recursively call the function after speed ms
-		}
-	}
-
-	// uncomment this for every time a user visits the site
-	// this is so we don't get <empty string> from trying to use innerHTML too early
-	/*setTimeout(() =>
-	{
-		thepage = localStorage.getItem("lastpage"); // we grab the lastpage so if the page changes we stop the typewriter
-		text = header.innerHTML; // set text to header's innerHTML
-		header.style.visibility = "visible"; // make header visible
-		header.innerHTML = ""; // clear its innerHTML
-		TypeWriter(text, thepage, 0); // call typewriter
-	}, 500);*/
-
 	// Router (part 1)
 	if(localStorage.getItem("lastpage")) // if we visited the site before, load the last page.
 	{
-		header.style.visibility = "visible"; // unhide header
 		LoadPage(localStorage.getItem("lastpage"), true);
 	}
-	else // first time we were here, load home and play a funny typewriter animation.
+	else // first time, load home
 	{
 		LoadPage("home", true);
-		// this is so we don't get <empty string> from trying to use innerHTML too early
-		setTimeout(() =>
-		{
-			thepage = localStorage.getItem("lastpage"); // we grab the lastpage so if the page changes we stop the typewriter
-			text = header.innerHTML; // set text to header's innerHTML
-			header.style.visibility = "visible"; // make header visible
-			header.innerHTML = ""; // clear its innerHTML
-			TypeWriter(text, thepage); // call typewriter
-		}, 500);
+		thepage = localStorage.getItem("lastpage");
 	}
 });
 
@@ -224,7 +187,7 @@ function LoadPage(page, isitonpageload) // Load page function, to load the pages
 				let pagename = data.page; // loaded pages have a page property that is the name of the page
 				header.innerHTML = pagename; // we set our header to the pagename...
 				document.title = pagename;  // as well as the document.title
-				localStorage.setItem("lastpage", page); // and we set the page here in case we reload or come back later.
+				localStorage.setItem("lastpage", page); // and we set the page here in case we reload or come back later
 				if (page === "portfolio" && maxprojects != data.projects) // if the page is portfolio and maxprojects doesn't equal the property data.projects
 				{
 					maxprojects = data.projects; // we set it to it
