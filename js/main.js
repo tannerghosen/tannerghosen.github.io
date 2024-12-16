@@ -5,6 +5,10 @@ if (!localStorage.getItem("mode"))
 }
 var project = 1;
 var maxprojects = 0;
+if (!localStorage.getItem("linkbar"))
+{
+	localStorage.setItem("linkbar", "closed");
+}
 // Functions
 document.addEventListener("DOMContentLoaded", () =>
 {
@@ -38,12 +42,19 @@ document.addEventListener("DOMContentLoaded", () =>
 			document.body.classList.remove("notransition"); // we don't want it forever because that'll mess up future transitions.
 		}, 500);
 	}
+	
 
 	document.getElementById("lightswitch").addEventListener("click", () =>
 	{
 		localStorage.setItem("mode", localStorage.getItem("mode") == "dark" ? "light" : "dark");
 		LightSwitch();
 	});
+
+	// Navbar-related stuff, if it was last open before refresh we remember this
+	if(localStorage.getItem("linkbar") === "open")
+	{
+		NavbarToggle();
+	}
 
 	// Time Function
 	function TheTime()
@@ -151,6 +162,8 @@ document.addEventListener("DOMContentLoaded", () =>
 		LoadPage("home", true);
 		thepage = localStorage.getItem("lastpage");
 	}
+	
+	setTimeout(() => { document.getElementsByClassName('container')[0].style.visibility = "visible"; }, 3000)
 });
 
 // Router (part 2)
@@ -222,4 +235,6 @@ function NavbarToggle()
 {
 	let l = document.getElementById("links");
 	l.style.display = l.style.display === "block" ? "none" : "block";
+	localStorage.setItem("linkbar", l.style.display  == "block" ? "open" : "closed"); // if set to block it was open, otherwise it's closed
+
 }

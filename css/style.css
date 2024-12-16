@@ -27,6 +27,9 @@ html, body {
   position: relative;
   bottom: 2.5%;
   overflow: hidden;
+  visibility: hidden;
+  animation: fadein 1s forwards;
+  animation-delay: 2s;
 }
 
 .flexcontainer {
@@ -289,6 +292,7 @@ li
 }
 @keyframes fadein {
   0% {
+    visibility: visible;
     opacity: 0;
   }
   10% {

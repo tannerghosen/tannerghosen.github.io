@@ -31,6 +31,9 @@ html, body
 	position: relative;
 	bottom: 2.5%;
 	overflow: hidden;
+	visibility: hidden;
+	animation: fadein 1s forwards;
+	animation-delay: 2s;
 }
 
 .flexcontainer 
@@ -364,6 +367,7 @@ li
 {
 	0%
 	{
+		visibility: visible;
 		opacity: 0;
 	}
 	10%
@@ -406,5 +410,4 @@ li
 	{
 		opacity: 1;
 	}
-	
 }
