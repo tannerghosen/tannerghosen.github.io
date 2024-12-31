@@ -36,6 +36,11 @@
   .headercontainer {
     height: 10vh;
   }
+  #simage {
+    height: 200px;
+    width: 225px;
+    text-align: center;
+  }
 }
 @media (min-width: 0) and (max-width: 480px) {
   body {
@@ -70,6 +75,11 @@
   .headercontainer {
     height: 10vh;
   }
+  #simage {
+    height: 150px;
+    width: 200px;
+    text-align: center;
+  }
 }
 @media (min-height: 351px) and (max-height: 600px) {
   body {
@@ -92,7 +102,7 @@
     grid-column: span 2;
   }
   #buttoncontainer {
-    bottom: 20%;
+    bottom: 10%;
   }
   .linkcontainer {
     font-size: 120%;
@@ -102,9 +112,13 @@
   }
   .project {
     height: 20vh;
-    display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
+  }
+  #simage {
+    height: 100px;
+    width: 200px;
+    text-align: center;
   }
 }
 @media (min-height: 0) and (max-height: 350px) {
@@ -128,19 +142,23 @@
     grid-column: span 2;
   }
   #buttoncontainer {
-    bottom: 10%;
+    bottom: 5%;
   }
   .linkcontainer {
     font-size: 120%;
   }
   .project {
     height: 15vh;
-    display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
   }
   .headercontainer {
     height: 7.5vh;
+  }
+  #simage {
+    height: 75px;
+    width: 200px;
+    text-align: center;
   }
 }
 
