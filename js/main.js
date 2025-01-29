@@ -143,12 +143,9 @@ document.addEventListener("DOMContentLoaded", () =>
 	// Links
 	document.body.addEventListener("click", (e) =>
 	{
-		if (e.target.tagName == "A")
+		if (e.target.tagName == "A" && e.target.href.includes("http") == false) // if anchor tag
 		{
-			if (e.target.href.includes("http") == false)
-			{
-				e.preventDefault(); // this is so we don't reload the page on clicking a non http/s link.
-			}
+			e.preventDefault(); // this is so we don't reload the page on clicking a non http/s link.
 		}
 	});
 
@@ -178,21 +175,21 @@ function LoadPage(page, isitonpageload) // Load page function, to load the pages
 	{
 		let header = document.getElementById("header"); // header is index.html's header
 
-		fetch(`${pages}/${page}.json`, { method: 'HEAD' }) // check to see if the file exists first
+		fetch(`${pages}/${page}.json`, { method: 'HEAD' }) 
 			.then(response =>
 			{
-				if (response.ok) // if it does
+				if (response.ok) // if response is ok
 				{
 					return fetch(`${pages}/${page}.json`); // fetch the page requested from /pages/
 				}
-				else // if it doesn't
+				else // if not okay
 				{
 					// load the error page
 					LoadPage("error"); // we can probably handle this better, but this works for now.
 					console.error("LoadPage had an error getting the page '" + page + "'. Maybe it's wrong or missing?");
 				}
 			})
-			.then(response => response.text())
+			.then(response => response.text()) // get response as text
 			.then(data =>
 			{
 				data = JSON.parse(data); // we parse our JSON string into an object we can access
@@ -201,10 +198,7 @@ function LoadPage(page, isitonpageload) // Load page function, to load the pages
 				header.innerHTML = pagename; // we set our header to the pagename...
 				document.title = pagename;  // as well as the document.title
 				localStorage.setItem("lastpage", page); // and we set the page here in case we reload or come back later
-				if (page === "portfolio" && maxprojects != data.projects) // if the page is portfolio and maxprojects doesn't equal the property data.projects
-				{
-					maxprojects = data.projects; // we set it to it
-				}
+				maxprojects = page === "portfolio" && maxprojects != data.projects ? data.projects : maxprojects; // set maxprojects to the amount of projects in the JSON file.
 			})
 			.catch(() =>
 			{
