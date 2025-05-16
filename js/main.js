@@ -153,14 +153,17 @@ document.addEventListener("DOMContentLoaded", () =>
 	if(localStorage.getItem("lastpage")) // if we visited the site before, load the last page.
 	{
 		LoadPage(localStorage.getItem("lastpage"), true);
+		document.getElementsByClassName('container')[0].style.visibility = "visible";
 	}
 	else // first time, load home
 	{
 		LoadPage("home", true);
 		thepage = localStorage.getItem("lastpage");
+		document.getElementsByClassName('header')[0].style.animation = "fadein 1s forwards";
+		setTimeout(() => { document.getElementsByClassName('container')[0].style.visibility = "visible"; }, 3000);
+		document.getElementsByClassName('container')[0].style.animation = "fadein 1s forwards";
+		document.getElementsByClassName('container')[0].style.animationDelay = "2s";
 	}
-	
-	setTimeout(() => { document.getElementsByClassName('container')[0].style.visibility = "visible"; }, 3000)
 });
 
 // Router (part 2)
@@ -230,5 +233,4 @@ function NavbarToggle()
 	let l = document.getElementById("links");
 	l.style.display = l.style.display === "block" ? "none" : "block";
 	localStorage.setItem("linkbar", l.style.display  == "block" ? "open" : "closed"); // if set to block it was open, otherwise it's closed
-
 }
