@@ -93,11 +93,11 @@
     overflow: hidden;
   }
   h1 {
-    font: 400 100% "Press Start 2P";
+    font: 400 105% "Press Start 2P";
     margin: 0;
   }
   .container h2 {
-    font: 400 65% "Press Start 2P";
+    font: 400 95% "Press Start 2P";
     margin: 0;
     grid-column: span 2;
   }
@@ -133,11 +133,11 @@
     overflow: hidden;
   }
   h1 {
-    font: 400 90% "Press Start 2P";
+    font: 400 95% "Press Start 2P";
     margin: 0;
   }
   .container h2 {
-    font: 400 55% "Press Start 2P";
+    font: 400 85% "Press Start 2P";
     margin: 0;
     grid-column: span 2;
   }
