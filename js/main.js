@@ -9,6 +9,9 @@ if (!localStorage.getItem("linkbar"))
 {
 	localStorage.setItem("linkbar", "closed");
 }
+
+var pagestack = []; // this is used to keep track of pages visited
+var pushstack = true; // this is used to determine if we should push the page into the above stack
 // Functions
 document.addEventListener("DOMContentLoaded", () =>
 {
@@ -170,8 +173,16 @@ document.addEventListener("DOMContentLoaded", () =>
 const pages = "./pages"; // directory of our pages.
 
 				 //file // is it called on page load (added so we don't have missing pages on refreshes because page == lastpage)
-function LoadPage(page, isitonpageload) // Load page function, to load the pages into our app
+function LoadPage(page, isitonpageload, isfrompopstate) // Load page function, to load the pages into our app
 {
+	if(pushstack && !isfrompopstate) // if it should push state and if this is not from a popstate event
+	{
+		//console.log("Adding new page to stack: " + page);
+		pagestack.push(page);
+		window.history.pushState({ page: page }, '', '');
+	}
+	pushstack = true; // reset it to true so future page loads will push into the stack
+	//console.log("Stack: " + pagestack);
 	const app = document.getElementById("app");
 	// if page is different from lastpage OR if this is being called on page loading
 	if (page != localStorage.getItem("lastpage") || isitonpageload == true)
@@ -234,3 +245,16 @@ function NavbarToggle()
 	l.style.display = l.style.display === "block" ? "none" : "block";
 	localStorage.setItem("linkbar", l.style.display  == "block" ? "open" : "closed"); // if set to block it was open, otherwise it's closed
 }
+
+window.addEventListener('popstate', (event) => 
+{
+	pushstack = false; // we don't push for backward navigation
+    if (pagestack.length > 1) 
+	{
+		//console.log("Popping page from stack: " + pagestack[pagestack.length - 1]);
+		pagestack.pop();
+		const newpage = pagestack[pagestack.length - 1]; 
+        LoadPage(newpage, false, true);
+		localStorage.setItem("lastpage", newpage);
+    }
+});
