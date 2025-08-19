@@ -212,16 +212,20 @@ function LoadPage(page, isitonpageload, isfrompopstate) // Load page function, t
 				let pagename = doc.getElementById("Title").innerHTML; // we get the title from the parsed doc
 				header.innerHTML = pagename; // we set our header to the pagename...
 				document.title = pagename;  // as well as the document.title
+				if(page == "portfolio")
+				{
+					let totalprojects = doc.getElementById("TotalProjects").innerHTML; // get the total projects from the parsed doc
+					maxprojects = maxprojects != totalprojects ? totalprojects : maxprojects; // set maxprojects to the amount of projects in the JSON file.
+				}
 				localStorage.setItem("lastpage", page); // and we set the page here in case we reload or come back later
-				let totalprojects = doc.getElementById("TotalProjects").innerHTML; // get the total projects from the parsed doc
-				maxprojects = page === "portfolio" && maxprojects != totalprojects ? totalprojects : maxprojects; // set maxprojects to the amount of projects in the JSON file.
 			})
-			.catch(() =>
+			.catch((e) =>
 			{
 				// I can only imagine this would happen if the user loses their internet connection, the website isn't reachable, or if CORS is enforced and this is locally without a server.
 				header.innerHTML = "Uh oh!";
-				app.innerHTML = "<p>An error occured while loading a page. Either your internet connection is down, or the website's down. To verify, please refresh the page and check your internet connection to see if it's still connected.</p>";
-				console.error("LoadPage had an error getting the page '" + page + "'. Maybe it's an internet issue or an issue reaching the website?");
+				app.innerHTML = "<p>An error occured while loading a page.</p><br><p>ERROR: "+e.message+"</p>";
+				console.error("Caught error in LoadPage: " + e.message);
+
 			})
 	}
 
