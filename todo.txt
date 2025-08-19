@@ -1,2 +1,2 @@
-migrate .json pages to .md to make life easier, removing the need to have a damn html to json python script
-https://github.com/showdownjs/showdown
+migrate .json pages to html, use domparser to parse it into a usable format.
+https://www.delftstack.com/howto/javascript/javascript-parse-html/

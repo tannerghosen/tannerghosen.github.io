@@ -189,12 +189,12 @@ function LoadPage(page, isitonpageload, isfrompopstate) // Load page function, t
 	{
 		let header = document.getElementById("header"); // header is index.html's header
 
-		fetch(`${pages}/${page}.json`, { method: 'HEAD' }) 
+		fetch(`${pages}/${page}.html`, { method: 'HEAD' }) 
 			.then(response =>
 			{
 				if (response.ok) // if response is ok
 				{
-					return fetch(`${pages}/${page}.json`); // fetch the page requested from /pages/
+					return fetch(`${pages}/${page}.html`); // fetch the page requested from /pages/
 				}
 				else // if not okay
 				{
@@ -206,13 +206,15 @@ function LoadPage(page, isitonpageload, isfrompopstate) // Load page function, t
 			.then(response => response.text()) // get response as text
 			.then(data =>
 			{
-				data = JSON.parse(data); // we parse our JSON string into an object we can access
-				app.innerHTML = data.content; // the div id 'app' will contain our content property from the loaded page JSON.
-				let pagename = data.page; // loaded pages have a page property that is the name of the page
+				const parser = new DOMParser(); // we use a DOMParser to parse the HTML string into a document
+				const doc = parser.parseFromString(data, 'text/html');
+				app.innerHTML = doc.getElementById("Content").innerHTML; // get the content from the parsed doc
+				let pagename = doc.getElementById("Title").innerHTML; // we get the title from the parsed doc
 				header.innerHTML = pagename; // we set our header to the pagename...
 				document.title = pagename;  // as well as the document.title
 				localStorage.setItem("lastpage", page); // and we set the page here in case we reload or come back later
-				maxprojects = page === "portfolio" && maxprojects != data.projects ? data.projects : maxprojects; // set maxprojects to the amount of projects in the JSON file.
+				let totalprojects = doc.getElementById("TotalProjects").innerHTML; // get the total projects from the parsed doc
+				maxprojects = page === "portfolio" && maxprojects != totalprojects ? totalprojects : maxprojects; // set maxprojects to the amount of projects in the JSON file.
 			})
 			.catch(() =>
 			{
