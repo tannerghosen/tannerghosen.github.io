@@ -172,17 +172,15 @@ document.addEventListener("DOMContentLoaded", () =>
 // Router (part 2)
 const pages = "./pages"; // directory of our pages.
 
-				 //file // is it called on page load (added so we don't have missing pages on refreshes because page == lastpage)
-function LoadPage(page, isitonpageload, isfrompopstate) // Load page function, to load the pages into our app
+				 //file // is it called on page load (added so we don't have missing pages on refreshes because page == lastpage) // pushes loaded page into the page stack.
+function LoadPage(page, isitonpageload, push = true) // Load page function, to load the pages into our app
 {
-	if(pushstack && !isfrompopstate) // if it should push state and if this is not from a popstate event
+	if(pushstack && push) // if pushstack is currently true and the push parameter is true
 	{
-		//console.log("Adding new page to stack: " + page);
-		pagestack.push(page);
-		window.history.pushState({ page: page }, '', '');
+		pagestack.push(page); // add page to the stack
+		window.history.pushState({ page: page }, '', ''); // add it to the window history
 	}
 	pushstack = true; // reset it to true so future page loads will push into the stack
-	//console.log("Stack: " + pagestack);
 	const app = document.getElementById("app");
 	// if page is different from lastpage OR if this is being called on page loading
 	if (page != localStorage.getItem("lastpage") || isitonpageload == true)
@@ -252,15 +250,15 @@ function NavbarToggle()
 	localStorage.setItem("linkbar", l.style.display  == "block" ? "open" : "closed"); // if set to block it was open, otherwise it's closed
 }
 
+// Browser Back Button
 window.addEventListener('popstate', (event) => 
 {
-	pushstack = false; // we don't push for backward navigation
-    if (pagestack.length > 1) 
+	pushstack = false; // as we're removing a page from the stack, we don't push.
+    if (pagestack.length > 1) // provided the stack is longer than 1
 	{
-		//console.log("Popping page from stack: " + pagestack[pagestack.length - 1]);
-		pagestack.pop();
-		const newpage = pagestack[pagestack.length - 1]; 
-        LoadPage(newpage, false, true);
+		pagestack.pop(); // pop
+		const newpage = pagestack[pagestack.length - 1]; // the new page is the current last page in the stack
+        LoadPage(newpage, false, false); // load it, but do not push.
 		localStorage.setItem("lastpage", newpage);
     }
 });
