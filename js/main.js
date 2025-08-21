@@ -12,6 +12,13 @@ if (!localStorage.getItem("linkbar"))
 
 var pagestack = []; // this is used to keep track of pages visited
 var pushstack = true; // this is used to determine if we should push the page into the above stack
+
+// Holiday Dictionary, used in TheTime() function to display special messages on holidays.
+const dates =
+{
+	birthday: ["June 29", "<b><i>Happy Birthday, Tanner!</i></b> 🎂"], 
+	test: ["", "if you see this, this is a test. it shouldn't be here otherwise"]
+}
 // Functions
 document.addEventListener("DOMContentLoaded", () =>
 {
@@ -103,6 +110,15 @@ document.addEventListener("DOMContentLoaded", () =>
 		if (document.getElementById("time"))
 		{
 			document.getElementById("time").innerHTML = `Today is ${weekday}, ${month} ${day}, ${year} and the time is ${hour}:${minute}:${second} ${period}.`;
+			switch(months[time.getMonth()] + " " + time.getDate())
+			{
+				case dates.birthday[0]:
+					document.getElementById("time").innerHTML += "<br>" + dates.birthday[1];
+					break;
+				case dates.test[0]:
+					document.getElementById("time").innerHTML += "<br>" + dates.test[1];
+					break;
+			}
 		}
 	}
 
@@ -219,7 +235,7 @@ function LoadPage(page, isitonpageload, push = true) // Load page function, to l
 			})
 			.catch((e) =>
 			{
-				// I can only imagine this would happen if the user loses their internet connection, the website isn't reachable, or if CORS is enforced and this is locally without a server.
+				// Error handling in case there's an error with the page's formatting, or something else.
 				header.innerHTML = "Uh oh!";
 				app.innerHTML = "<p>An error occured while loading a page.</p><br><p>ERROR: "+e.message+"</p>";
 				console.error("Caught error in LoadPage: " + e.message);
