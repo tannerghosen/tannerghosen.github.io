@@ -16,8 +16,7 @@ var pushstack = true; // this is used to determine if we should push the page in
 // Holiday Dictionary, used in TheTime() function to display special messages on holidays.
 const dates =
 {
-	birthday: ["June 29", "<b><i>Happy Birthday, Tanner!</i></b> 🎂"], 
-	test: ["", "if you see this, this is a test. it shouldn't be here otherwise"]
+	birthday: ["June 29", "<b><i>Happy Birthday, Tanner!</i></b> 🎂"]
 }
 // Functions
 document.addEventListener("DOMContentLoaded", () =>
@@ -110,16 +109,20 @@ document.addEventListener("DOMContentLoaded", () =>
 		if (document.getElementById("time"))
 		{
 			document.getElementById("time").innerHTML = `Today is ${weekday}, ${month} ${day}, ${year} and the time is ${hour}:${minute}:${second} ${period}.`;
-			switch(months[time.getMonth()] + " " + time.getDate())
-			{
-				case dates.birthday[0]:
-					document.getElementById("time").innerHTML += "<br>" + dates.birthday[1];
-					break;
-				case dates.test[0]:
-					document.getElementById("time").innerHTML += "<br>" + dates.test[1];
-					break;
-			}
+			HolidayCheck(months[time.getMonth()], time.getDate());
 		}
+	}
+
+	function HolidayCheck(m, d)
+	{
+		const today = `${m} ${d}`;
+		Object.entries(dates).forEach(([key, [date, msg]]) => 
+		{
+			if(date === today) 
+			{
+				document.getElementById("time").innerHTML += "<br>" + msg;
+			}
+		});
 	}
 
 	TheTime();
