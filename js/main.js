@@ -108,13 +108,13 @@ document.addEventListener("DOMContentLoaded", () =>
 		if (document.getElementById("time"))
 		{
 			document.getElementById("time").innerHTML = `Today is ${weekday}, ${month} ${day}, ${year} and the time is ${hour}:${minute}:${second} ${period}.`;
-			HolidayCheck(months[time.getMonth()], time.getDate());
+			HolidayCheck(months[time.getMonth()] + " " + time.getDate());
 		}
 	}
 
-	function HolidayCheck(m, d)
+	function HolidayCheck(d)
 	{
-		const today = `${m} ${d}`;
+		const today = `${d}`;
 		Object.entries(dates).forEach(([key, [date, msg]]) => // for each key value pair (key -> [date , msg]) in the dates dictionary
 		{
 			if(date === today)
