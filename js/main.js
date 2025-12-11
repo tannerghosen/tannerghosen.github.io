@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () =>
 		}, 500);
 	}
 	
-
 	document.getElementById("lightswitch").addEventListener("click", () =>
 	{
 		localStorage.setItem("mode", localStorage.getItem("mode") == "dark" ? "light" : "dark");
@@ -116,9 +115,9 @@ document.addEventListener("DOMContentLoaded", () =>
 	function HolidayCheck(m, d)
 	{
 		const today = `${m} ${d}`;
-		Object.entries(dates).forEach(([key, [date, msg]]) => 
+		Object.entries(dates).forEach(([key, [date, msg]]) => // for each key value pair (key -> [date , msg]) in the dates dictionary
 		{
-			if(date === today) 
+			if(date === today)
 			{
 				document.getElementById("time").innerHTML += "<br>" + msg;
 			}
@@ -199,7 +198,7 @@ function LoadPage(page, isitonpageload, push = true) // Load page function, to l
 		pagestack.push(page); // add page to the stack
 		window.history.pushState({ page: page }, '', ''); // add it to the window history
 	}
-	pushstack = true; // reset it to true so future page loads will push into the stack
+	pushstack = true; // reset it to true so future LoadPage calls will push the page onto the stack unless it's a back button event, which will set this to false.
 	const app = document.getElementById("app");
 	// if page is different from lastpage OR if this is being called on page loading
 	if (page != localStorage.getItem("lastpage") || isitonpageload == true)
@@ -277,7 +276,7 @@ window.addEventListener('popstate', (event) =>
 	{
 		pagestack.pop(); // pop
 		const newpage = pagestack[pagestack.length - 1]; // the new page is the current last page in the stack
-        LoadPage(newpage, false, false); // load it, but do not push.
+        LoadPage(newpage, false, false); // load it, but do not push it onto the stack.
 		localStorage.setItem("lastpage", newpage);
     }
 });
