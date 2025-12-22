@@ -10,9 +10,6 @@ if (!localStorage.getItem("linkbar"))
 	localStorage.setItem("linkbar", "closed");
 }
 
-var pagestack = []; // this is used to keep track of pages visited
-var pushstack = true; // this is used to determine if we should push the page into the above stack
-
 // Holiday Dictionary, used in TheTime() function to display special messages on holidays.
 const dates =
 {
@@ -127,6 +124,35 @@ document.addEventListener("DOMContentLoaded", () =>
 	TheTime();
 	let timer = setInterval(() => TheTime(), 1000);
 
+	// Links
+	document.body.addEventListener("click", (e) =>
+	{
+		if (e.target.tagName == "A" && e.target.href.includes("/") == false && e.target.href.includes("http") == false) // if anchor tag
+		{
+			e.preventDefault(); // this is so we don't reload the page on clicking a non http/s link.
+		}
+	});
+
+	if(!localStorage.getItem("visited"))
+	{
+		localStorage.setItem("visited", true);
+		document.getElementsByClassName('header')[0].style.animation = "fadein 1s forwards";
+		setTimeout(() => { document.getElementsByClassName('container')[0].style.visibility = "visible"; }, 3000);
+		document.getElementsByClassName('container')[0].style.animation = "fadein 1s forwards";
+		document.getElementsByClassName('container')[0].style.animationDelay = "2s";
+	}
+	else
+	{
+		document.getElementsByClassName('container')[0].style.visibility = "visible";
+	}
+});
+
+// Portfolio related stuff
+if (window.location.href.includes("Portfolio")) // if we are on the portfolio page
+{
+	maxprojects = document.getElementsByClassName("project").length; // count how many projects there are and set maxprojects to that.
+	document.getElementById("app").style = "height: 50vh;"; // set the height of the app div to 50% of the viewport height
+
 	// Slideshow
 	// Back Button
 	document.getElementById("backbutton").addEventListener("click", () =>
@@ -136,12 +162,14 @@ document.addEventListener("DOMContentLoaded", () =>
 			project = maxprojects;
 			document.getElementById("project1").setAttribute("hidden", "");
 			document.getElementById("project" + project).removeAttribute("hidden");
+			console.log(project);
 		}
 		else
 		{
 			project--;
 			document.getElementById("project" + (project + 1)).setAttribute("hidden", "");
 			document.getElementById("project" + project).removeAttribute("hidden");
+			console.log(project);
 		}
 	});
 	// Next Button
@@ -152,112 +180,16 @@ document.addEventListener("DOMContentLoaded", () =>
 			project = 1;
 			document.getElementById("project" + maxprojects).setAttribute("hidden", "");
 			document.getElementById("project" + project).removeAttribute("hidden");
+			console.log(project);
 		}
 		else
 		{
 			project++;
 			document.getElementById("project" + (project - 1)).setAttribute("hidden", "");
 			document.getElementById("project" + project).removeAttribute("hidden");
+			console.log(project);
 		}
 	});
-
-	// Links
-	document.body.addEventListener("click", (e) =>
-	{
-		if (e.target.tagName == "A" && e.target.href.includes("http") == false) // if anchor tag
-		{
-			e.preventDefault(); // this is so we don't reload the page on clicking a non http/s link.
-		}
-	});
-
-	// Router (part 1)
-	if(localStorage.getItem("lastpage")) // if we visited the site before, load the last page.
-	{
-		LoadPage(localStorage.getItem("lastpage"), true);
-		document.getElementsByClassName('container')[0].style.visibility = "visible";
-	}
-	else // first time, load home
-	{
-		LoadPage("home", true);
-		thepage = localStorage.getItem("lastpage");
-		document.getElementsByClassName('header')[0].style.animation = "fadein 1s forwards";
-		setTimeout(() => { document.getElementsByClassName('container')[0].style.visibility = "visible"; }, 3000);
-		document.getElementsByClassName('container')[0].style.animation = "fadein 1s forwards";
-		document.getElementsByClassName('container')[0].style.animationDelay = "2s";
-	}
-});
-
-// Router (part 2)
-const pages = "./pages"; // directory of our pages.
-
-				 //file // is it called on page load (added so we don't have missing pages on refreshes because page == lastpage) // pushes loaded page into the page stack.
-function LoadPage(page, isitonpageload, push = true) // Load page function, to load the pages into our app
-{
-	if(pushstack && push) // if pushstack is currently true and the push parameter is true
-	{
-		pagestack.push(page); // add page to the stack
-		window.history.pushState({ page: page }, '', ''); // add it to the window history
-	}
-	pushstack = true; // reset it to true so future LoadPage calls will push the page onto the stack unless it's a back button event, which will set this to false.
-	const app = document.getElementById("app");
-	// if page is different from lastpage OR if this is being called on page loading
-	if (page != localStorage.getItem("lastpage") || isitonpageload == true)
-	{
-		let header = document.getElementById("header"); // header is index.html's header
-
-		fetch(`${pages}/${page}.html`, { method: 'HEAD' }) 
-			.then(response =>
-			{
-				if (response.ok) // if response is ok
-				{
-					return fetch(`${pages}/${page}.html`); // fetch the page requested from /pages/
-				}
-				else // if not okay
-				{
-					// load the error page
-					LoadPage("error"); // we can probably handle this better, but this works for now.
-					console.error("LoadPage had an error getting the page '" + page + "'. Maybe it's wrong or missing?");
-				}
-			})
-			.then(response => response.text()) // get response as text
-			.then(data =>
-			{
-				const parser = new DOMParser(); // we use a DOMParser to parse the HTML string into a document
-				const doc = parser.parseFromString(data, 'text/html');
-				app.innerHTML = doc.getElementById("Content").innerHTML; // get the content from the parsed doc
-				let pagename = doc.getElementById("Title").innerHTML; // we get the title from the parsed doc
-				header.innerHTML = pagename; // we set our header to the pagename...
-				document.title = pagename;  // as well as the document.title
-				if(page == "portfolio")
-				{
-					let totalprojects = doc.getElementById("TotalProjects").innerHTML; // get the total projects from the parsed doc
-					maxprojects = maxprojects != totalprojects ? totalprojects : maxprojects; // set maxprojects to the amount of projects in the JSON file.
-				}
-				localStorage.setItem("lastpage", page); // and we set the page here in case we reload or come back later
-			})
-			.catch((e) =>
-			{
-				// Error handling in case there's an error with the page's formatting, or something else.
-				header.innerHTML = "Uh oh!";
-				app.innerHTML = "<p>An error occured while loading a page.</p><br><p>ERROR: "+e.message+"</p>";
-				console.error("Caught error in LoadPage: " + e.message);
-
-			})
-	}
-
-// Show/Hide Buttons
-	if (page == "portfolio") // if the page is Portfolio, make buttons visible.
-	{
-		project = 1; // This fixes a bug where it would try to continue from whatever number it was originally on
-		// on page switch (if the site wasn't reloaded)
-		document.getElementById("buttoncontainer").removeAttribute("hidden");
-		document.getElementById("app").style = "height: 50vh;";
-	}
-	else
-	{
-		document.getElementById("buttoncontainer").setAttribute("hidden", "");
-		document.getElementById("app").style = "height: 20vh;";
-	}
 }
 
 // Navbar
@@ -267,16 +199,3 @@ function NavbarToggle()
 	l.style.display = l.style.display === "block" ? "none" : "block";
 	localStorage.setItem("linkbar", l.style.display  == "block" ? "open" : "closed"); // if set to block it was open, otherwise it's closed
 }
-
-// Browser Back Button
-window.addEventListener('popstate', (event) => 
-{
-	pushstack = false; // as we're removing a page from the stack, we don't push.
-    if (pagestack.length > 1) // provided the stack is longer than 1
-	{
-		pagestack.pop(); // pop
-		const newpage = pagestack[pagestack.length - 1]; // the new page is the current last page in the stack
-        LoadPage(newpage, false, false); // load it, but do not push it onto the stack.
-		localStorage.setItem("lastpage", newpage);
-    }
-});
