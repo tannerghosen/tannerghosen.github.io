@@ -162,14 +162,12 @@ if (window.location.href.includes("Portfolio")) // if we are on the portfolio pa
 			project = maxprojects;
 			document.getElementById("project1").setAttribute("hidden", "");
 			document.getElementById("project" + project).removeAttribute("hidden");
-			console.log(project);
 		}
 		else
 		{
 			project--;
 			document.getElementById("project" + (project + 1)).setAttribute("hidden", "");
 			document.getElementById("project" + project).removeAttribute("hidden");
-			console.log(project);
 		}
 	});
 	// Next Button
@@ -180,14 +178,12 @@ if (window.location.href.includes("Portfolio")) // if we are on the portfolio pa
 			project = 1;
 			document.getElementById("project" + maxprojects).setAttribute("hidden", "");
 			document.getElementById("project" + project).removeAttribute("hidden");
-			console.log(project);
 		}
 		else
 		{
 			project++;
 			document.getElementById("project" + (project - 1)).setAttribute("hidden", "");
 			document.getElementById("project" + project).removeAttribute("hidden");
-			console.log(project);
 		}
 	});
 }
