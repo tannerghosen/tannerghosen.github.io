@@ -23,7 +23,9 @@ document.addEventListener("DOMContentLoaded", () =>
 	{
 		console.log('mobile');
 		let link = document.createElement("link");
-		link.href = "./css/mobile.css";
+		link.href = "../css/mobile.css";
+		if(window.location.href.includes("index"))
+			link.href = "./css/mobile.css";
 		link.rel = "stylesheet";
 		document.head.appendChild(link);
 	}
