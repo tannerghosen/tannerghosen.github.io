@@ -111,9 +111,10 @@ document.addEventListener("DOMContentLoaded", () =>
 		}
 	}
 
+	// Holiday Check, called every second despite how inefficient that is
 	function HolidayCheck(d)
 	{
-		const today = `${d}`;
+		const today = d;
 		Object.entries(dates).forEach(([key, [date, msg]]) => // for each key value pair (key -> [date , msg]) in the dates dictionary
 		{
 			if(date === today)
