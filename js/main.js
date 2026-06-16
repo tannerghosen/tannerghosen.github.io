@@ -136,6 +136,7 @@ document.addEventListener("DOMContentLoaded", () =>
 		}
 	});
 
+	// Animation for the first time visiting the website for the first time
 	if(!localStorage.getItem("visited"))
 	{
 		localStorage.setItem("visited", true);
