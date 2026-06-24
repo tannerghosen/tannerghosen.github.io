@@ -1,6 +1,0 @@
-NOTE FOR MAKING .CSS
-cd to this folder
-run this:
-sass --no-source-map scss:css
-Make sure to remove variables.css
-easy as del css\variables.css
