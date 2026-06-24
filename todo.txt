@@ -1,2 +1,6 @@
-migrate .json pages to html, use domparser to parse it into a usable format.
-https://www.delftstack.com/howto/javascript/javascript-parse-html/
+NOTE FOR MAKING .CSS
+cd to this folder
+run this:
+sass --no-source-map scss:css
+Make sure to remove variables.css
+easy as del css\variables.css
