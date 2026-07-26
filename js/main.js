@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () =>
 		{
 			period = "PM";
 		}
+		
 		else if (hour <= 11)
 		{
 			period = "AM";
