@@ -15,6 +15,7 @@ const dates =
 {
 	birthday: ["June 29", "<b><i>Happy Birthday, Tanner!</i></b> 🎂"]
 }
+
 // Functions
 document.addEventListener("DOMContentLoaded", () =>
 {
