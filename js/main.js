@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () =>
 if (window.location.href.includes("Portfolio")) // if we are on the portfolio page
 {
 	maxprojects = document.getElementsByClassName("project").length; // count how many projects there are and set maxprojects to that.
-	document.getElementById("app").style = localStorage.getItem("ismobile") == "yes" ? "height: 70vh;" : "height: 50vh;"; // set the height of the app div to 50% of the viewport height
+	document.getElementById("app").style = "height: 50vh;"; // set the height of the app div to 50% of the viewport height
 
 	// Slideshow
 	// Back Button
