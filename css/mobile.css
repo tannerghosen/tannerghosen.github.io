@@ -3,16 +3,19 @@
   font-size: 85%;
 }
 
+.project {
+  overflow: visible;
+}
+
 @media (min-width: 480px) and (max-width: 720px) {
   body {
     font-size: 80%;
   }
   .container {
     height: 100%; /* screen height */
-    max-height: 75vh;
     max-width: 75%;
     top: 5%;
-    overflow: hidden;
+    overflow: visible;
   }
   h1 {
     font: 400 125% "Press Start 2P";
@@ -48,10 +51,9 @@
   }
   .container {
     height: 100%; /* screen height */
-    max-height: 75vh;
     max-width: 75%;
     top: 5%;
-    overflow: hidden;
+    overflow: visible;
   }
   h1 {
     font: 400 110% "Press Start 2P";
@@ -87,10 +89,9 @@
   }
   .container {
     height: 100%; /* screen height */
-    max-height: 75vh;
     max-width: 85%;
     top: 5%;
-    overflow: hidden;
+    overflow: visible;
   }
   h1 {
     font: 400 105% "Press Start 2P";
@@ -111,7 +112,7 @@
     height: 10vh;
   }
   .project {
-    height: 20vh;
+    height: 30vh;
     align-items: flex-start;
     flex-wrap: wrap;
   }
@@ -127,10 +128,9 @@
   }
   .container {
     height: 100%; /* screen height */
-    max-height: 75vh;
-    max-width: 95%;
+    max-width: 100%;
     top: 5%;
-    overflow: hidden;
+    overflow: visible;
   }
   h1 {
     font: 400 95% "Press Start 2P";
@@ -148,7 +148,7 @@
     font-size: 120%;
   }
   .project {
-    height: 15vh;
+    height: 30vh;
     align-items: flex-start;
     flex-wrap: wrap;
   }

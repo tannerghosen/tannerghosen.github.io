@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 /* to-do: clean up the stylesheet a bit */
 body {
-  font: normal 110% Consolas;
+  font: normal 110% monospace;
   margin: 0;
 }
 
@@ -26,7 +26,7 @@ html, body {
   justify-content: center; /* align content in center horizontally */
   position: relative;
   bottom: 2.5%;
-  overflow: hidden;
+  overflow: visible;
   visibility: hidden;
 }
 
