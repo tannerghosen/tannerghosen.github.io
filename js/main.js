@@ -11,9 +11,10 @@ if (!localStorage.getItem("linkbar"))
 }
 
 // Holiday Dictionary, used in TheTime() function to display special messages on holidays.
+// Stored as the Month Day : Message
 const dates =
 {
-	birthday: ["June 29", "<b><i>Happy Birthday, Tanner!</i></b> 🎂"]
+	"June 29": "<b><i>Happy Birthday, Tanner!</i></b> 🎂" // Birthday
 }
 
 // Functions
@@ -117,9 +118,9 @@ document.addEventListener("DOMContentLoaded", () =>
 	// Holiday Check, called every second despite how inefficient that is
 	function HolidayCheck(d)
 	{
-		Object.entries(dates).forEach(([key, [date, msg]]) => // for each key value pair (key -> [date , msg]) in the dates dictionary
+		Object.entries(dates).forEach(([key, msg]) => // for each key value pair (key (date), msg) in the dates dictionary
 		{
-			if(date === d)
+			if(key === d)
 			{
 				document.getElementById("time").innerHTML += "<br>" + msg;
 			}
