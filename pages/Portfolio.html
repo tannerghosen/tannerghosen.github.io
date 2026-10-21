@@ -18,10 +18,10 @@
             <a href="../index.html">Home</a><a href="./About.html">About</a><a href="">Portfolio</a><a href="https://github.com/tannerghosen">GitHub</a><span id="lightbulb"><a href="javascript:;" id="lightswitch">💡 <!--Toggle Light/Dark Mode--></a></span>
         </div>
     </div>
-    <div class="headercontainer">
-    <h1 class="header" id="header">Portfolio</h1>
-    </div>
     <div class="container">
+        <div class="headercontainer">
+        <h1 class="header" id="header">Portfolio</h1>
+        </div>
         <div class="appcontainer">
             <div id="app">
                 <div id="project1" class="project">
@@ -31,16 +31,18 @@
 
                 <div hidden id="project2" class="project">
                     <h2>Wasspord</h2>
-                    <img src="/assets/Wasspord.png" alt="Wasspord" id="simage">
-                    <p>This is a password management program made using WinForms in C# & .NET. The program saves account info added to this program in a .wasspord file with a user's name of choice. Attached to these files can be a password to unlock the file for future use. All passwords, including the one to unlock the program, are encrypted into the file so that it cannot be easily decrypted without the program. As bonus features, Wasspord comes with a password generator, password validator, miscellaneous settings, and autosaving functionality.</p>
-                    <a href="https://github.com/tannerghosen/Wasspord">GitHub Repo</a>
+                    <!--<img src="/assets/Wasspord.png" alt="Wasspord" id="simage">-->
+                    <p>This is a password management program made using WinForms in C# & .NET. The program saves account info added to this program in a .wasspord file with a user's name of choice. Attached to these files can be a password to unlock the file for future use. All passwords, including the one to unlock the program, are encrypted into the file so that it cannot be easily decrypted without the program. As bonus features, Wasspord comes with a password generator, password validator, miscellaneous settings, and autosaving functionality.
+                    <br><a href="https://github.com/tannerghosen/Wasspord">GitHub Repo</a>
+                    <br><a href="javascript:;" onclick="OpenDisplay('/assets/Wasspord.png')">Image</a></p>
                 </div>
 
                 <div hidden id="project3" class="project">
                     <h2>Tanner's Website Template</h2>
-                    <img src="/assets/TannersWebsiteTemplate.PNG" alt="Tanner's Website Template" id="simage">
-                    <p>This is a website template I created using C#, ASP.NET Core & Razor Pages, and MariaDB/MySQL. It has a login/registration/account system, ban system, admin controls, and blog posts and comments. It has optional features, like Google sign-in if the details are set up via environment keys.</p>
-                    <a href="https://github.com/tannerghosen/TannersWebsiteTemplate">GitHub Repo</a>
+                    <!--<img src="/assets/TannersWebsiteTemplate.PNG" alt="Tanner's Website Template" id="simage">-->
+                    <p>This is a website template I created using C#, ASP.NET Core & Razor Pages, and MariaDB/MySQL. It has a login/registration/account system, ban system, admin controls, and blog posts and comments. It has optional features, like Google sign-in if the details are set up via environment keys.
+                    <br><a href="https://github.com/tannerghosen/TannersWebsiteTemplate">GitHub Repo</a>
+                    <br><a href="javascript:;" onclick="OpenDisplay('/assets/TannersWebsiteTemplate.PNG')">Image</a></p>
                 </div>
 
                 <div hidden id="project4" class="project">
@@ -51,6 +53,12 @@
         </div>
     </div>
     <div id="buttoncontainer"><div id="backbutton">Back</div><div style="float: left; padding-right: 10px;"></div><div id="nextbutton">Next</div></div>
+</div>
+<div class="display">
+    <div class="window">
+    <a href="javascript:;" onclick="Display()"><b id="X" style="float: right">X</b></a>
+    <img id="image" src="" alt="">
+    </div>
 </div>
 <script src="../js/main.js"></script>
 </body>

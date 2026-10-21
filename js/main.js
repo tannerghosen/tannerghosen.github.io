@@ -158,7 +158,6 @@ document.addEventListener("DOMContentLoaded", () =>
 if (window.location.href.includes("Portfolio")) // if we are on the portfolio page
 {
 	maxprojects = document.getElementsByClassName("project").length; // count how many projects there are and set maxprojects to that.
-	document.getElementById("app").style = "height: 50vh;"; // set the height of the app div to 50% of the viewport height
 
 	// Slideshow
 	// Back Button
@@ -201,4 +200,23 @@ function NavbarToggle()
 	let l = document.getElementById("links");
 	l.style.display = l.style.display === "block" ? "none" : "block";
 	localStorage.setItem("linkbar", l.style.display  == "block" ? "open" : "closed"); // if set to block it was open, otherwise it's closed
+}
+
+// Display
+function Display()
+{
+	let d = document.getElementsByClassName("display")[0];
+	console.log(d.style.visibility)
+	d.style.visibility = d.style.visibility === "hidden" || !d.style.visibility ? "visible" : "hidden";
+}
+
+function SetImage(i)
+{
+	document.getElementById("image").src = i;
+}
+
+function OpenDisplay(i)
+{
+	Display();
+	SetImage(i);
 }
