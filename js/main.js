@@ -208,6 +208,7 @@ function Display()
 	let d = document.getElementsByClassName("display")[0];
 	console.log(d.style.visibility)
 	d.style.visibility = d.style.visibility === "hidden" || !d.style.visibility ? "visible" : "hidden";
+	d.style.animation = d.style.visibility === "hidden" || !d.style.visibility ? "fadeout 1s forwards" : "fadein 1s forwards";
 }
 
 function SetImage(i)
