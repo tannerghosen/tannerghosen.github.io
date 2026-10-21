@@ -1,3 +1,4 @@
+<!-- to do: copy this to each page, and replace the inner div id app with that page's contents, etc. -->
 <!doctype html>
 <html lang="en-US">
 <head>
@@ -10,24 +11,25 @@
 </head>
 <body id="body">
 <div class="flexcontainer">
-    <div class="linkcontainer">
-        <a href="javascript:;" class="icon" id="linksthebutton" onclick="NavbarToggle()">
-        Links
-        </a>
-        <div id="links">
-            <a href="../index.html">Home</a><a href="">About</a><a href="./Portfolio.html">Portfolio</a><a href="https://github.com/tannerghosen">GitHub</a><span id="lightbulb"><a href="javascript:;" id="lightswitch">💡 <!--Toggle Light/Dark Mode--></a></span>
-        </div>
+<div class="linkcontainer">
+    <a href="javascript:;" class="icon" id="linksthebutton" onclick="NavbarToggle()">
+    Links
+    </a>
+    <div id="links">
+        <a href="../index.html">Home</a><a href="">About</a><a href="./Portfolio.html">Portfolio</a><a href="https://github.com/tannerghosen">GitHub</a><span id="lightbulb"><a href="javascript:;" id="lightswitch">💡 <!--Toggle Light/Dark Mode--></a></span>
     </div>
-    <div class="headercontainer">
-    <h1 class="header" id="header">About</h1>
+</div>
+<div class="container">
+<div class="headercontainer">
+<h1 class="header" id="header">About</h1>
+</div>
+<div class="appcontainer">
+    <div id="app">
+        <p>My name is Tanner Ghosen. I graduated from SUNY Buffalo State College with a Bachelor of Science in Computer Information Systems. My fields of interest are Web Development (Back End / Full Stack) and Software Development. I enjoy writing and working with code as it's a fun and challenging endeavor.</p>
     </div>
-    <div class="container">
-        <div class="appcontainer">
-            <div id="app">
-                <p>My name is Tanner Ghosen. I graduated from SUNY Buffalo State College with a Bachelor of Science in Computer Information Systems. My fields of interest are Web Development (Back End / Full Stack) and Software Development. I enjoy writing and working with code as it's a fun and challenging endeavor.</p>
-            </div>
-        </div>
-    </div>
+</div>
+</div>
+<div hidden id="buttoncontainer"><div id="backbutton">Back</div><div style="float: left; padding-right: 10px;"></div><div id="nextbutton">Next</div></div>
 </div>
 <script src="../js/main.js"></script>
 </body>
