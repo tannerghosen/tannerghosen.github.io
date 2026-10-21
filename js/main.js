@@ -144,9 +144,10 @@ document.addEventListener("DOMContentLoaded", () =>
 	{
 		localStorage.setItem("visited", true);
 		document.getElementsByClassName('header')[0].style.animation = "fadein 1s forwards";
-		setTimeout(() => { document.getElementsByClassName('container')[0].style.visibility = "visible"; }, 3000);
-		document.getElementsByClassName('container')[0].style.animation = "fadein 1s forwards";
-		document.getElementsByClassName('container')[0].style.animationDelay = "2s";
+		setTimeout(() => { document.getElementsByClassName('header')[0].style.visibility = "visible" }, 1000); // fixes the header immediately disappearing after the animation ends
+		setTimeout(() => { document.getElementsByClassName('appcontainer')[0].style.visibility = "visible"; }, 3000);
+		document.getElementsByClassName('appcontainer')[0].style.animation = "fadein 1s forwards";
+		document.getElementsByClassName('appcontainer')[0].style.animationDelay = "2s";
 	}
 	else
 	{
