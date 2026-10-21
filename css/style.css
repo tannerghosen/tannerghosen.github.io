@@ -198,7 +198,7 @@ li
 {
 	position: absolute;
 	left: 50%;
-	bottom: 7.5%;
+	bottom: 30%;
 	transform: translate(-50%, 0%);
 	margin: 0 auto;
 	padding: 30px; 
@@ -280,8 +280,8 @@ li
 	/*height: 20vh;*/
 	overflow: visible;
 	min-width: 67.5vw;
-	min-height: 35vh;
-	max-height: 50vh;
+	min-height: 50vh;
+	max-height: 30vh;
 	padding: 15px;
 }
 
@@ -429,14 +429,14 @@ li
 
 .appcontainer
 {
-  background-color: var(--almostblack);
-  border: 3px solid var(--lightwhite);
+  /*background-color: var(--black);
+  border: 3px solid var(--lightwhite);*/
 }
 
 .lightmode .appcontainer
 {
-  background-color: var(--lightwhite);
-  border: 3px solid var(--almostblack);
+  /*background-color: var(--white);
+  border: 3px solid var(--almostblack);*/
 }
 .window
 {
@@ -457,7 +457,7 @@ li
 .window b
 {
   	border: 2px solid var(--lightwhite);
-	padding: 2px 3px 2px 3px;
+	padding: 2px 4px 2px 4px;
 }
 
 .lightmode .window b
