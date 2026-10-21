@@ -215,12 +215,15 @@ li
 	height: 200px;
 	align-items: center;
 	flex-wrap: wrap;
+	max-width: 50vw;
+	margin: 0 auto;
+    text-align: left;
 }
 
 #simage 
 {
-	height: 250px;
-	width: 400px;
+	height: 22.22vh;
+	width: 25vw;
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
@@ -274,9 +277,15 @@ li
 {
 	display: flex;
 	flex-direction: column; 
-	height: 20vh;
+	/*height: 20vh;*/
 	overflow: visible;
+	min-width: 67.5vw;
+	min-height: 35vh;
+	max-height: 50vh;
+	padding: 15px;
 }
+
+
 /* Responsive */
 /* Moved to mobile.css */
 
@@ -416,4 +425,53 @@ li
 	{
 		opacity: 1;
 	}
+}
+
+.appcontainer
+{
+  background-color: var(--almostblack);
+  border: 3px solid var(--lightwhite);
+}
+
+.lightmode .appcontainer
+{
+  background-color: var(--lightwhite);
+  border: 3px solid var(--almostblack);
+}
+.window
+{
+	z-index: 0;
+	width: 44vw;
+	height: 55vh;
+	background-color: var(--almostblack);
+  	border: 2px solid var(--lightwhite);
+	position: fixed;
+}
+
+.lightmode .window
+{
+  background-color: var(--lightwhite);
+  border: 2px solid var(--almostblack);
+}
+
+.window b
+{
+  	border: 2px solid var(--lightwhite);
+	padding: 2px 3px 2px 3px;
+}
+
+.lightmode .window b
+{
+  	border: 2px solid var(--almostblack);
+}
+
+.display
+{
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+  visibility: hidden;
 }
