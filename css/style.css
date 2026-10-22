@@ -520,7 +520,7 @@ li
   inset: 0;
   display: grid;
   place-items: center;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 9999;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
   visibility: hidden;
 }
