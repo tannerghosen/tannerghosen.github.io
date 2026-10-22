@@ -89,8 +89,9 @@ a:hover
 
 img 
 {
-    width: 43.60vw;
+    width: 45vw;
     height: 50vh;
+	background-color: rgba(0, 0, 0, 0);
 	/*border: 1px solid var(--lightergray);
 	border-radius: 2px;
 	padding: 5px;*/
@@ -155,8 +156,7 @@ li
 
 .lightmode img 
 {
-	border: 1px solid var(--darkergray);
-	border-radius: 4px;
+	background-color: rgba(0, 0, 0, 0);
 	padding: 5px;
 }
 
@@ -490,28 +490,28 @@ li
 .window
 {
 	z-index: 0;
-	width: 44vw;
-	height: 51vh;
-	background-color: var(--almostblack);
-  	border: 3px solid var(--lightwhite);
+	width: 45vw;
+	height: 50vh;
+	/*background-color: var(--almostblack);
+  	border: 3px solid var(--lightwhite);*/
 	position: fixed;
 }
 
 .lightmode .window
 {
-  background-color: var(--lightwhite);
-  border: 3px solid var(--almostblack);
+  /*background-color: var(--lightwhite);
+  border: 3px solid var(--almostblack);*/
 }
 
 .window b
 {
-  	border: 2px solid var(--lightwhite);
+  	/*border: 2px solid var(--lightwhite);*/
 	padding: 2px 4px 2px 4px;
 }
 
 .lightmode .window b
 {
-  	border: 2px solid var(--almostblack);
+  	/*border: 2px solid var(--almostblack);*/
 }
 
 .display
