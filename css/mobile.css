@@ -8,6 +8,71 @@
 {
 	overflow: visible;
 }
+@media (min-width: 800px) and (max-width: 1600px)
+{
+	body 
+	{
+		font-size: 90%;
+	}
+
+	.container 
+	{
+		height: 100%; /* screen height */
+		max-width: 95%;
+		top: 5%;
+		overflow: visible;
+	}
+
+	h1 
+	{
+		font: 400 150% var(--psfont);
+		margin: 0;
+	}
+
+	.container h2 
+	{
+		font: 400 100% var(--psfont);
+		margin: 0;
+		grid-column: span 2;
+	}
+
+	#buttoncontainer 
+	{
+		bottom: 40%;
+	}
+
+	.linkcontainer 
+	{
+		font-size: 85%;
+	}
+
+	.linkcontainer a 
+	{
+		float: left;
+		padding: 0px 5px;
+	}
+
+	.headercontainer 
+	{
+		height: 10vh;
+	}
+	#simage 
+	{
+		height: 200px;
+		width: 225px;
+		text-align: center;
+	}
+	.window
+	{
+		width: 60vw;
+		height: 45vh;
+	}
+	img
+	{
+		width: 60vw;
+		height: 45vh;
+	}
+}
 @media (min-width: 480px) and (max-width: 800px)
 {
 	body 
@@ -18,7 +83,7 @@
 	.container 
 	{
 		height: 100%; /* screen height */
-		max-width: 75%;
+		max-width: 95%;
 		top: 5%;
 		overflow: visible;
 	}
@@ -84,20 +149,20 @@
     .container 
     {
         height: 100%; /* screen height */
-        max-width: 75%;
+        max-width: 85%;
         top: 5%;
 		    overflow: visible;
     }
 	
 	h1 
 	{
-		font: 400 110% var(--psfont);
+		font: 400 100% var(--psfont);
 		margin: 0;
 	}
 
 	.container h2 
 	{
-		font: 400 90% var(--psfont);
+		font: 400 85% var(--psfont);
 		margin: 0;
 		grid-column: span 2;
 	}
